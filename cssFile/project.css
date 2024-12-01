@@ -1,0 +1,260 @@
+.project-container {
+    display: flex;
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    padding: 40px;
+    gap: 20px;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    /* Prevents project cards from wrapping */
+   
+     overflow-y: hidden;
+    /* overflow: hidden; */
+  
+  }
+  
+  .project-container::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  .project {
+    background-color:#38434d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    min-width: 250px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 0 auto;
+    
+   
+
+   
+  }
+  
+  .project:hover {
+    transform: scale(1.05);
+    border: 1px solid white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .project img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ffffff;
+  }
+  
+  .project-title {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .project-description {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+/*   
+  .project:hover {
+    animation: hoverEffect 1s ease forwards;
+    box-shadow: 0px 1px 20px 2px#89a2b9;
+  } */
+  
+  @keyframes hoverEffect {
+    0% {
+        transform: scale(1); /* Initial size */
+    }
+    100% {
+        transform: scale(1.1); /* Grow in size */
+    }
+   
+  }
+  section{
+    height: 65vh;
+  }
+  
+  .project:active {
+    transform: scale(1); /* Return to normal size on click */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Original shadow */
+  }
+
+  .probtn{
+    background-color: #0000003f;
+    box-shadow: 0px 1px 6px 1px #666666;
+    border-radius: 10px;
+  }
+  
+  #moreProjectsBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color:#38434d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #moreProjectsBtn:hover {
+    background-color:#38434d;
+  }
+  
+  
+  
+  
+  
+  
+  .project a:hover {
+    background-color:hsl(209, 16%, 26%);
+  } 
+/* Fix the content hidden behind navbar */
+ html {
+    scroll-behavior: smooth;
+  } 
+  
+   section {
+    scroll-margin-top: 100px;
+  } 
+  
+  /* Specific project section adjustments */
+  .projects { 
+     padding-top: 100px;  
+  } 
+    
+  @media (max-width: 600px){
+    .project-container{
+      height: 40vh;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+ .projects {
+    position: relative;
+    overflow: hidden;
+    width: 100%; 
+}
+
+
+/* .project-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+   
+}  */
+
+
+
+
+
+
+
+
+
+
+.scroll-btn {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #3e3858, #03031d);
+  color: white;
+  border: none;
+  border-radius: 50%; /* Circular button */
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  color: hsl(209, 16%, 26%);
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2; /* Ensure buttons are above content */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Left Button */
+.left-btn {
+  left: 10px;
+}
+
+/* Right Button */
+.right-btn {
+  right: 10px;
+}
+
+/* Hover Effect */
+.scroll-btn:hover {
+  transform: translateY(-50%) scale(1.1); /* Slight zoom on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Button Icon Animation */
+.scroll-btn span {
+  display: inline-block;
+  animation: bounce 1s infinite;
+}
+
+/* Bouncing Animation */
+@keyframes bounce {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}
+
+
+
+
+
+
+/* About Section on Small Screens */
+@media (max-width: 600px) {
+  .about {
+      flex-direction: column; /* Stack content vertically */
+      gap: 20px; /* Add space between elements */
+      padding: 20px; /* Add padding for better spacing */
+  }
+
+  .aboutsec {
+      display: none; /* Optional: Hide the profile image on very small screens */
+  }
+
+  .info {
+      width: 100%; /* Take full width */
+      height: auto; /* Adjust height dynamically */
+  }
+}
+
+/* Projects Section on Small Screens */
+@media (max-width: 600px) {
+  .projects {
+      padding-top: 20px; /* Ensure there's space above the section */
+  }
+
+  .project-container {
+      flex-direction: row; /* Horizontal scrolling remains */
+      height: auto; /* Let height adjust automatically */
+      margin-top: 20px; /* Add space between sections */
+  }
+}
+
+/* General Section Spacing */
+section {
+  margin-bottom: 20px; /* Add spacing between all sections */
+}

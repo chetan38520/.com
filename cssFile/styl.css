@@ -1,0 +1,109 @@
+.skills {
+    padding: 10px 20px;
+   
+    text-align: center;
+  }
+  
+  .skills h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .skillsinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .skill {
+    width: 80%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(55, 78, 109);;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow:0px 0px 5px 0px #7292a5;
+  }
+  
+  .skill img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+  }
+  
+  .skill p {
+    color: #fff;
+    font-size: 1.2rem;
+  }
+  
+  .skill strong {
+    color: #ffffff;
+  }
+
+  
+
+
+
+
+  .heading ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .heading li {
+    display: inline;
+  }
+  
+  .heading a {
+    text-decoration: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .content-section {
+    margin-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+
+
+
+  /* button styling  */
+  .skill-list {
+  max-height: 100px; /* Restrict initial height */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.skill-list.expanded {
+  max-height: 300px; /* Set a height that allows scrolling */
+  overflow-y: auto; /* Enable scrolling */
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #446b88;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 4px -4px 10px 3px black;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.any{
+  width: 30%;
+
+}

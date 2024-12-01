@@ -1,0 +1,336 @@
+
+
+ body {
+    font-family: Arial, sans-serif;
+  }
+
+  
+  
+  
+  
+  
+
+
+
+  
+  #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+ 
+  }
+  #contact header h1{
+    color: #89a2b9;
+    font-size: 40px;
+  }
+  .contact-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+   
+  }
+  .contact-info{
+    display: flex;
+    height: 50vh;
+    flex-direction: column;
+    /* background-color: aqua; */
+  }
+  .social-media{
+    display: flex;
+  flex-direction: column;
+  align-items: start;
+ 
+ height: auto;
+
+}
+
+.social-media a{
+  display: flex;
+ 
+  font-size: 30px;
+  margin: 20px;
+}
+.social-media a svg{
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+.social-media a p{
+ 
+  margin-top: 15px;
+}
+#email p{
+  font-size: 25px;
+   margin-top: 15px;
+   text-decoration: underline;
+   color:  #8b8b8b;
+ 
+}
+  
+  .contact-info, .ask-question-form {
+    width: 45%;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .contact-info h2, .ask-question-form h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .social-media img {
+    width: 35px;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+  
+  .btn{
+    background-color: #4a5866;
+    margin-top: 0px;
+  }
+ 
+ 
+ #askMeForm{
+  text-align: left;
+ 
+  display: flex;
+  flex-direction: column;
+  background-color:  #38434d;
+  padding: 30px;
+  border-radius: 5px;
+ 
+  box-shadow:-1px -1px 11px 4px #646f7e;
+ }
+ input{
+ border: none;
+ outline: none;
+ height: 35px;
+ width: 250px;
+ padding-left: 10px;
+ border-radius: 5px;
+
+ }
+ #askMeForm label{
+  font-size: 20px;
+  color: #89a2b9;
+  margin-bottom: 5px;
+  font-weight: 800;
+ }
+ #message{
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding-top: 5px;
+  font-size: 1.2rem;
+ 
+ }
+
+
+
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+  
+  }
+
+  /* Styling the form */
+  /* #askMeForm {
+    width: 300px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  } */
+
+  /* Success message card centered on the page */
+  .card {
+    border-radius: 10px;
+    display: none;
+    opacity: 1;
+    width: 400px;
+    height: 250px;
+    background-color: #89a2b9;
+    padding: 20px;
+   
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+  }
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Adjust this for split proportion */
+    background-color: #ffffff; /* Secondary color */
+    z-index: -1;
+     border-start-end-radius: 10px;
+     border-start-start-radius: 10px;
+}
+
+  .card p{
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: 30px;
+   
+  }
+
+  /* Visible class for showing the card */
+  .card .visible {
+    display: block;
+    opacity: 1;
+  }
+
+
+  @media (max-width: 600px) {
+   
+    #askMeForm  {
+        display: none; /* Smaller label size */
+    }
+ 
+   
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+  #contact {
+      flex-direction: column; /* Stack all elements vertically */
+      padding: 20px;
+  }
+
+  .contact-container {
+      flex-direction: column; /* Stack info and form vertically */
+      align-items: center; /* Center align the content */
+      justify-content: center;
+      gap: 20px; /* Add spacing between sections */
+  }
+
+  .contact-info, .ask-question-form {
+      width: 100%; /* Full width for smaller screens */
+      margin: 0 auto; /* Center content */
+      height: auto; /* Adjust height dynamically */
+      box-shadow: none; /* Remove shadows for simplicity */
+      border-radius: 5px; /* Slight rounding for modern appearance */
+  }
+
+  .social-media a {
+      font-size: 20px; /* Reduce font size */
+      margin: 10px; /* Reduce spacing */
+  }
+
+  .social-media a svg {
+      width: 40px; /* Resize icons */
+      height: 40px;
+      margin-right: 10px; /* Adjust spacing */
+  }
+
+  .social-media a p {
+      font-size: 16px; /* Smaller font for text */
+      margin-top: 10px; /* Adjust vertical spacing */
+  }
+
+  #email p {
+      font-size: 18px; /* Reduce font size for email */
+  }
+
+  #askMeForm {
+      display: flex; /* Show form */
+      flex-direction: column; /* Stack inputs vertically */
+      width: 90%; /* Adjust width for better fit */
+      padding: 20px; /* Add padding */
+  }
+
+  input, #message {
+      width: 100%; /* Full width for inputs and text area */
+  }
+
+  .btn {
+      width: 100%; /* Full width for button */
+      font-size: 16px; /* Adjust font size */
+      padding: 10px; /* Add padding for better touch area */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

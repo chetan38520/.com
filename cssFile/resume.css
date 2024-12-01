@@ -1,0 +1,299 @@
+body {
+    font-family: 'Arial', sans-serif;
+    /* background-color: #121212; Dark background */
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0; /* Light text for readability */
+}
+
+.section-title h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #ffffff; /* White title */
+}
+.section-title h2 span{
+    color: #89a2b9;
+}
+
+#resume {
+   
+    /* Darker background for the resume section */
+    max-width: 100vw;
+    margin: 0 auto;
+    height: 100vh;
+    border-radius: 10px;
+    /* Dark shadow */
+}
+
+.resume-container {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.right-side {
+    width: 50%;
+}
+
+.right-side h3 {
+    font-size: 24px;
+    color: #e7e7e7; /* Light grey for subheading */
+    text-shadow:4px -1px 4px #828080;
+    margin-bottom: 15px;
+}
+
+.certifications {
+    max-height: 300px;  /* Height of the certification div */
+    overflow-y: scroll; /* Enables scrolling */
+    padding-right: 10px;
+    border-right: 2px solid #333; /* Subtle divider in dark color */
+    scrollbar-width: thin;         /* For Firefox */
+    width: 70%;
+    scrollbar-color: #888 transparent; /* For Firefox: thumb color and transparent track */
+}
+
+.certification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.certification-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.certification-list img {
+    width: 150px;
+    height:100px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 5px;
+    /* Darker shadow for images */
+}
+
+.left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume-picture {
+    width: 100%;
+    max-width: 250px;
+   
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Darker shadow for the picture */
+}
+
+/* Custom Scrollbar Styling for WebKit browsers (Chrome, Safari, Edge) */
+.certifications::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.certifications::-webkit-scrollbar-track {
+    background-color: transparent; /* Transparent scrollbar track */
+}
+
+.certifications::-webkit-scrollbar-thumb {
+    background-color: #888;     /* Thumb color */
+    border-radius: 10px;        /* Rounded scrollbar thumb */
+}
+
+.certifications::-webkit-scrollbar-thumb:hover {
+    background-color: #555;     /* Darker thumb on hover */
+}
+
+/* Hover effect on certifications images */
+.certification-list img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Lightbox styling */
+/* Lightbox styling */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 100px; */
+}
+
+.lightbox-content {
+    padding-top: 20px;
+    max-width: 80%;
+    max-height: 80%;
+    transition: transform 0.3s ease;
+}
+
+/* Close button styling */
+.close {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.548);
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Ensures close button is above certificate */
+}
+
+/* Zoom controls styling */
+.zoom-controls {
+    position: fixed; /* Fixed position for visibility */
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensures buttons are above certificate */
+    display: flex;
+    gap: 10px;
+}
+
+.zoom-controls button {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    padding: 5px 10px;
+    background-color:#38434d6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .close {
+        font-size: 24px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .zoom-controls button {
+        font-size: 18px;
+        padding: 5px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .close {
+        font-size: 20px;
+        top: 10px;
+        right: 10px;
+        padding: 4px 8px;
+    }
+
+    .zoom-controls button {
+        font-size: 16px;
+        padding: 4px 6px;
+    }
+}
+.certificate-heading{
+    
+    width: 40%;
+}
+
+
+
+
+/* Default Layout for Larger Screens */
+.resume-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Responsive Adjustments for Small Screens */
+@media (max-width: 768px) {
+    .resume-container {
+        flex-direction: column; /* Stack the content vertically */
+        align-items: center; /* Center align the content */
+        text-align: center; /* Center the text */
+    }
+
+    .left-side, .right-side {
+        width: 100%; /* Take full width */
+        margin-bottom: 20px; /* Add spacing between sections */
+    }
+
+    .certifications {
+        width: 90%; /* Adjust width for smaller screens */
+        margin: 0 auto; /* Center the certifications */
+        padding-right: 0; /* Remove padding to fit the screen */
+        border-right: none; /* Remove divider for a cleaner look */
+    }
+
+    .certification-list img {
+        width: 100px; /* Adjust size of certification images */
+        height: 80px; /* Maintain aspect ratio */
+    }
+}
+
+/* Further Adjustments for Very Small Screens */
+@media (max-width: 480px) {
+    .resume-container {
+        padding: 10px; /* Add padding for smaller screens */
+    }
+
+    .certifications {
+        width: 100%; /* Full width for very small screens */
+    }
+
+    .certification-list img {
+        width: 80px; /* Smaller image size for compact layout */
+        height: 60px;
+    }
+
+    .certification-list li {
+        flex-direction: column; /* Stack text and image vertically */
+    }
+
+    .resume-picture {
+        max-width: 200px; /* Resize resume picture for smaller screens */
+    }
+}
+
+
+
+
+.resume-btn {
+    display: inline-block;
+    height: 40px;
+    width: 200px;
+    margin-top: 15px;
+   padding: 0px;
+   
+    
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  .resume-btn a{
+    font-weight: bold;
+    color: #fff;
+    font-size: 15px;
+  }
+  .resume-btn a i{
+    font-weight: 600;
+    margin-right: 5px;
+
+  }
+  .resume-btn:hover {
+    background-color: #0056b3;
+  }
+  
