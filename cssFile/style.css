@@ -1,8 +1,23 @@
+
+
+
+
 * {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Remove outline on click for all elements (use cautiously) */
+:focus {
+  outline: none;
+}
+
+/* Alternatively, target the specific icon class to remove the outline */
+.icon-class:focus {
+  outline: none;
+}
+
 
 /* Prevent horizontal scrolling */
 html, body {
