@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-  emailjs.init("8F8ZcR0446BM3RUdc");
+  emailjs.init("dKTKktX-6IjCTSvcQ");
 
   document.getElementById('askMeForm').addEventListener('submit', function(event) {
     event.preventDefault();
    
-    emailjs.sendForm('service_flcq1zp', 'template_sk5g94k', this) // Use the correct template ID here
+    emailjs.sendForm('service_sfxzxjf', 'template_sk5g94k', this) // Use the correct template ID here
       .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
         // document.getElementById('responseMessage').innerText = "Thank you! Your question has been sent successfully.";
