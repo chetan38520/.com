@@ -239,6 +239,10 @@
       width: 100%; /* Take full width */
       height: auto; /* Adjust height dynamically */
   }
+    .skillsinfo {
+    height: 60vh; /* 70% of viewport height */
+    max-height: 70vh; /* Maximum height up to 80% of viewport height */
+}
 }
 
 /* Projects Section on Small Screens */
