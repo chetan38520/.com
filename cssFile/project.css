@@ -226,7 +226,7 @@
 /* About Section on Small Screens */
 @media (max-width: 600px) {
   .about {
-      flex-direction: column; /* Stack content vertically */
+     
       gap: 20px; /* Add space between elements */
       padding: 20px; /* Add padding for better spacing */
   }
