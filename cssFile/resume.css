@@ -74,10 +74,7 @@ body {
     border-radius: 5px;
     /* Darker shadow for images */
 }
-.certificate-heading{
-    
-    width: 40%;
-}
+
 
 .left-side {
     width: 50%;
@@ -210,9 +207,10 @@ body {
     }
 }
 .certificate-heading{
-    fornt-size:1.2rem;
+/*     fornt-size:1.2rem;
     margin-bottom:10px;
-    width: 70%;
+    width: 70%; */
+     width:40px;
 }
 
 
