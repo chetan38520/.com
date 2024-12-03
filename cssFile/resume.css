@@ -74,7 +74,9 @@ body {
     border-radius: 5px;
     /* Darker shadow for images */
 }
-
+.certificate-heading{
+     width:40%;
+}
 
 .left-side {
     width: 50%;
