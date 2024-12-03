@@ -188,6 +188,8 @@ body {
         font-size: 18px;
         padding: 5px 8px;
     }
+    .lightbox-content{
+        margin-top:170px;
 }
 
 @media (max-width: 480px) {
@@ -210,6 +212,9 @@ body {
 }
 
 
+ .lightbox-content{
+        margin-top:160px;
+}
 
 
 /* Default Layout for Larger Screens */
