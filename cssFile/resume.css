@@ -204,8 +204,9 @@ body {
     }
 }
 .certificate-heading{
-    
-    width: 40%;
+    fornt-size:1.2rem;
+    margin-bottom:10px;
+    width: 70%;
 }
 
 
@@ -254,8 +255,8 @@ body {
     }
 
     .certification-list img {
-        width: 80px; /* Smaller image size for compact layout */
-        height: 60px;
+       width: 260px;
+        height: 200px;
     }
 
     .certification-list li {
