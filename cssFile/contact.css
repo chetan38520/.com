@@ -223,6 +223,7 @@
   #contact {
       flex-direction: column; /* Stack all elements vertically */
       padding: 20px;
+      height:120vh;
   }
 
   .contact-container {
