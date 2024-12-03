@@ -281,7 +281,7 @@ body {
 
 
 
-.resume-btn {
+#resume-btn {
     display: inline-block;
     height: 40px;
     width: 200px;
@@ -294,17 +294,17 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease;
   }
-  .resume-btn a{
+  #resume-btn a{
     font-weight: bold;
     color: #fff;
     font-size: 15px;
   }
-  .resume-btn a i{
+  #resume-btn a i{
     font-weight: 600;
     margin-right: 5px;
 
   }
-  .resume-btn:hover {
+  #resume-btn:hover {
     background-color: #0056b3;
   }
   
