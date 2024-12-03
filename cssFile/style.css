@@ -271,6 +271,7 @@ a {
         align-items: start;
         margin-left: 0px;
         height: 89vh;
+        margin-left:-85px;
     }
     .para{
         width: 50%;
