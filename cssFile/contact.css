@@ -219,7 +219,7 @@
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   #contact {
       flex-direction: column; /* Stack all elements vertically */
       padding: 20px;
