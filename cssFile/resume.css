@@ -194,6 +194,13 @@ body {
     }
     .lightbox-content{
         margin-top:170px;
+    }
+     .certificate-heading{
+    fornt-size:1.2rem;
+    margin-bottom:10px;
+    width: 70%;
+     
+}
 }
 
 @media (max-width: 480px) {
@@ -282,6 +289,12 @@ body {
     .resume-picture {
         max-width: 200px; /* Resize resume picture for smaller screens */
     }
+     .certificate-heading{
+    fornt-size:1.2rem;
+    margin-bottom:10px;
+    width: 70%;
+     
+}
 }
 
 
