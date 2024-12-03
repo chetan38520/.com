@@ -252,9 +252,10 @@ body {
         width: 100px; /* Adjust size of certification images */
         height: 80px; /* Maintain aspect ratio */
     }
-         .certificate-heading {
-        width: 220px;
-       
+        .certificate-heading {
+        width: 260px;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
     }
 }
 }
