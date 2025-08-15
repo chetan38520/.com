@@ -9,278 +9,438 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
         body {
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-}
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            top: -100px;
+            right: -100px;
+            animation: float 8s infinite ease-in-out;
+            box-shadow: 0px 0px 8px 2px black;
+        }
+        
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            bottom: -50px;
+            left: -50px;
+            animation: float 6s infinite ease-in-out reverse;
+            box-shadow: 0px 0px 8px 2px black;
+        }
 
-.hero-bg {
-    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-}
 
-/* Project Card */
-.project-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-                0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Skill Pill */
-.skill-pill {
-    transition: all 0.3s ease;
-}
-.skill-pill:hover {
-    transform: scale(1.05);
-}
-
-/* Navigation Link */
-.nav-link {
-    position: relative;
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: #4F46E5;
-    transition: width 0.3s ease;
-}
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* Section Fade */
-.section-fade, .fade-in, .stagger-item {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.section-fade.visible, .fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Floating Animation */
-@keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(20px, 20px) rotate(10deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-.float-animation { animation: float 6s ease-in-out infinite; }
-
-/* Pulse Animation */
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-.pulse-animation, .pulse { animation: pulse 2s ease-in-out infinite; }
-
-/* Gradient Animation */
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-.animated-gradient {
-    background: linear-gradient(-45deg, #4F46E5, #7C3AED, #EC4899, #F59E0B);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-}
-
-/* Bounce In Animation */
-@keyframes bounceIn {
-    0% { opacity: 0; transform: scale(0.3); }
-    50% { opacity: 1; transform: scale(1.05); }
-    70% { transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
-.bounce-in { animation: bounceIn 1s ease-out forwards; opacity: 0; }
-
-/* Slide Animations */
-@keyframes slideInLeft {
-    0% { opacity: 0; transform: translateX(-100px); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-.slide-in-left { animation: slideInLeft 0.8s ease-out; }
-
-@keyframes slideInRight {
-    0% { opacity: 0; transform: translateX(100px); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-.slide-in-right { animation: slideInRight 0.8s ease-out; }
-
-/* Fade In Up */
-@keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-.fade-in-up { animation: fadeInUp 0.6s ease-out; }
-
-/* Rotate Animation */
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-.rotate-slow { animation: rotate 20s linear infinite; }
-
-/* Typing Effect */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-.typing-text {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #fff;
-    animation: typing 3.5s steps(40, end), blink 1s step-end infinite;
-}
-.typewriter-cursor::after {
-    content: '|';
-    animation: blink 1s infinite;
-    color: #F59E0B;
-    font-weight: bold;
-}
-
-/* Rotate In */
-@keyframes rotateIn {
-    from { transform: rotate(-90deg); opacity: 0; }
-    to { transform: rotate(0); opacity: 1; }
-}
-.rotate-in { animation: rotateIn 1s forwards; opacity: 0; }
-
-/* Progress Bar */
-.progress-bar {
-    width: 0;
-    transition: width 1.5s ease-in-out;
-}
-
-/* Skill Bar Animation */
-@keyframes fillBar {
-    0% { width: 0%; }
-    100% { width: var(--target-width); }
-}
-.skill-bar { animation: fillBar 2s ease-out 0.5s both; }
-
-/* Animated BG for Contact */
-.animated-bg {
-    position: relative;
-    overflow: hidden;
-}
-.animated-bg::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(to bottom right,
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 20px) rotate(10deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+         /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Gradient animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(-45deg, #4F46E5, #7C3AED, #EC4899, #F59E0B);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* Bounce in animation */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(0);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        /* Slide in from left */
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        /* Slide in from right */
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        /* Fade in up */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Rotate animation */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+       
+      
+        
+        /* Typewriter cursor */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .typewriter-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #F59E0B;
+            font-weight: bold;
+        }
+        
+        /* Stagger animation delays */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #fff;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink 1s step-end infinite;
+        }
+        
+        .rotate-in {
+            animation: rotateIn 1s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-90deg);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0);
+                opacity: 1;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes bounceIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        /* Animated background for contact section */
+        .animated-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
                 rgba(79, 70, 229, 0.03) 0%,
-                rgba(124, 58, 237, 0.03) 100%);
-    transform: rotate(-45deg);
-    animation: shimmer 15s linear infinite;
-    z-index: 0;
-}
-@keyframes shimmer {
-    0% { transform: rotate(-45deg) translateY(0%); }
-    100% { transform: rotate(-45deg) translateY(100%); }
-}
+                rgba(124, 58, 237, 0.03) 100%
+            );
+            transform: rotate(-45deg);
+            animation: shimmer 15s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(-45deg) translateY(0%); }
+            100% { transform: rotate(-45deg) translateY(100%); }
+        }
+        
+        /* Floating animation for contact icons */
+        .float {
+            animation: floating 3s infinite ease-in-out;
+        }
+        
+        .float:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .float:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
 
-/* Floating Icons */
-.float { animation: floating 3s infinite ease-in-out; }
-.float:nth-child(2) { animation-delay: 0.5s; }
-.float:nth-child(3) { animation-delay: 1s; }
-@keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
 
-/* Certificate Styles */
+        /* Certificate Styles */
 .certificate-item {
     transition: all 0.3s ease;
 }
+
 .certificate-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
-#certificate-modal { transition: opacity 0.3s ease; }
-#close-modal { transition: transform 0.2s ease; }
-#close-modal:hover { transform: rotate(90deg); }
 
-/* Miscellaneous */
-.projectimg { width: 100%; height: 100%; }
-#projects .project-card:nth-child(n+4) { display: none; }
-#scroll-progress {
-    height: 4px;
-    background: linear-gradient(to right, #525ce7, #525ce7);
-    position: fixed;
-    top: 52px;
-    left: 0;
-    width: 0%;
-    z-index: 1000;
-    transition: width 0.25s ease-out;
+#certificate-modal {
+    transition: opacity 0.3s ease;
 }
-nav { background-color: rgba(255, 255, 255, 0.945); }
 
-/* Stagger Animation Delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
-.stagger-7 { animation-delay: 0.7s; }
-.stagger-8 { animation-delay: 0.8s; }
+#close-modal {
+    transition: transform 0.2s ease;
+}
 
+#close-modal:hover {
+    transform: rotate(90deg);
+}
+.projectimg{
+    width: 100%;
+    height: 100%;
+}
+ #projects .project-card:nth-child(n+4) {
+    display: none;
+  }
+ #scroll-progress {
+  height: 4px;
+  background: linear-gradient(to right, #525ce7, #525ce7); /* yellow tones */
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.25s ease-out;
+}
+nav{
+    background-color: rgba(255, 255, 255, 0.945);
+}
     </style>
 </head>
 <body class="bg-gray-50">
- <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-xl font-bold text-indigo-600">Portfolio</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">About</a>
-                    <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Projects</a>
-                    <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Skills</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Contact</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
+    <!-- Navigation -->
+    <nav class=" shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">Portfolio</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">About</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Projects</a>
+                <a href="#resume" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Resume</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Skills</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+            </div>
+            
+            <!-- Mobile Navigation Toggle -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About</a>
-                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Projects</a>
-                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Skills</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-indigo-600 font-medium py-2">About</a>
+                <a href="#projects" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Projects</a>
+                <a href="#skills" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Skills</a>
+                <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Contact</a>
             </div>
         </div>
     </nav>
+<div id="scroll-progress" class="h-1 bg-yellow-300 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out"></div>
 
     <!-- Hero Section -->
-    <section id="home" class="animated-gradient min-h-screen flex items-center pt-16 relative overflow-hidden">
+   
+<section id="home" class="animated-gradient min-h-screen flex items-center pt-16 relative overflow-hidden">
         <!-- Animated Charts Background -->
         <div class="absolute inset-0 opacity-20">
             <svg id="animated-charts" class="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -381,7 +541,7 @@ nav { background-color: rgba(255, 255, 255, 0.945); }
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 text-center md:text-left text-white">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 slide-in-left">Hi, I'm <span class="text-yellow-300 pulse-animation">Your Name</span></h1>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 slide-in-left">Hi, I'm <span class="text-yellow-300 pulse-animation">Chetan</span></h1>
                     <p class="text-xl sm:text-2xl mb-8 slide-in-left stagger-2">I'm a <span id="typed-text" class="font-semibold typewriter-cursor"></span></p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-4 slide-in-left stagger-3">
                         <a href="#projects" class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 bounce-in stagger-4">View My Work</a>
@@ -391,9 +551,10 @@ nav { background-color: rgba(255, 255, 255, 0.945); }
                 <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
                     <div class="relative w-64 h-64 sm:w-80 sm:h-80 slide-in-right">
                         <div class="absolute inset-0 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm border border-white border-opacity-20 flex items-center justify-center float-animation">
-                            <svg class="w-40 h-40 text-white rotate-slow" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <!-- <svg class="w-40 h-40 text-white rotate-slow" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                            </svg>
+                            </svg> -->
+                            <img src="image/chetan.png" alt="">
                         </div>
                         <!-- Floating particles -->
                         <div class="absolute top-10 left-10 w-4 h-4 bg-yellow-300 rounded-full opacity-70 float-animation stagger-1"></div>
@@ -988,25 +1149,35 @@ nav { background-color: rgba(255, 255, 255, 0.945); }
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         
-         // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
+        menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-        
-        // Typing effect
+         // Typing effect
         const typedTextElement = document.getElementById('typed-text');
-        const professions = ['Web Developer', 'UI/UX Designer', 'Creative Thinker'];
+        const professions = ['Data Analyst', 'Creative Thinker'];
         let professionIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -1670,29 +1841,6 @@ nav { background-color: rgba(255, 255, 255, 0.945); }
                 }
             });
         });
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
         // Contact Form Handling
         const contactForm = document.getElementById('contact-form');
         const formMessage = document.getElementById('form-message');
@@ -1897,5 +2045,3 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-
