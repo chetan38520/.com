@@ -10,6 +10,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         
+          
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
@@ -17,36 +18,160 @@
         
         .hero-bg {
             background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
             position: relative;
-            overflow: hidden;
         }
         
-        .hero-bg::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            top: -100px;
-            right: -100px;
-            animation: float 8s infinite ease-in-out;
-            box-shadow: 0px 0px 8px 2px black;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
         }
         
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            bottom: -50px;
-            left: -50px;
-            animation: float 6s infinite ease-in-out reverse;
-            box-shadow: 0px 0px 8px 2px black;
+        .nav-link:hover::after {
+            width: 100%;
         }
-
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Gradient animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(-45deg, #4F46E5, #7C3AED, #EC4899, #F59E0B);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* Bounce in animation */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(0);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        /* Slide in from left */
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        /* Slide in from right */
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        /* Fade in up */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Rotate animation */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .rotate-slow {
+            animation: rotate 20s linear infinite;
+        }
 
         @keyframes float {
             0% { transform: translate(0, 0) rotate(0deg); }
@@ -266,69 +391,167 @@ nav{
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class=" shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-600">Portfolio</a>
-            
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Home</a>
-                <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">About</a>
-                <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Projects</a>
-                <a href="#resume" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Resume</a>
-                <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Skills</a>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
-            </div>
-            
-            <!-- Mobile Navigation Toggle -->
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+ <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-indigo-600">Portfolio</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">About</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Projects</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Skills</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 transition duration-300">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-        
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
-            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
-                <a href="#home" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Home</a>
-                <a href="#about" class="text-gray-700 hover:text-indigo-600 font-medium py-2">About</a>
-                <a href="#projects" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Projects</a>
-                <a href="#skills" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Skills</a>
-                <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Contact</a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Skills</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Contact</a>
             </div>
         </div>
     </nav>
-<div id="scroll-progress" class="h-1 bg-yellow-300 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out"></div>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white py-20 md:py-32">
-        <div class="container mx-auto px-4">
+    <section id="home" class="animated-gradient min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <!-- Animated Charts Background -->
+        <div class="absolute inset-0 opacity-20">
+            <svg id="animated-charts" class="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grid Lines -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                    </pattern>
+                    <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:rgba(255,255,255,0.6);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+                    </linearGradient>
+                    <radialGradient id="bubbleGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:rgba(255,255,255,0.8);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+                    </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <!-- Line Chart (Top Left) -->
+                <g id="line-chart" transform="translate(50, 50)">
+                    <polyline id="line1" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
+                    <polyline id="line2" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"/>
+                    <polygon id="area1" fill="url(#areaGradient)" opacity="0.4"/>
+                    <!-- Data points -->
+                    <g id="line-dots"></g>
+                </g>
+                
+                <!-- Bar Chart (Top Center) -->
+                <g id="bar-chart" transform="translate(500, 80)">
+                    <g id="bars"></g>
+                </g>
+                
+                <!-- Area Chart (Top Right) -->
+                <g id="area-chart" transform="translate(950, 60)">
+                    <polygon id="area-fill" fill="url(#areaGradient)" opacity="0.6"/>
+                    <polyline id="area-line" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2"/>
+                </g>
+                
+                <!-- Scatter Plot (Center Left) -->
+                <g id="scatter-plot" transform="translate(100, 300)">
+                    <g id="scatter-points"></g>
+                </g>
+                
+                <!-- Bubble Chart (Center Right) -->
+                <g id="bubble-chart" transform="translate(800, 300)">
+                    <g id="bubble-points"></g>
+                </g>
+                
+                <!-- Radar Chart (Center) -->
+                <g id="radar-chart" transform="translate(600, 400)">
+                    <g id="radar-web"></g>
+                    <polygon id="radar-data" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+                </g>
+                
+                <!-- Pie Chart (Bottom Left) -->
+                <g id="pie-chart" transform="translate(200, 550)">
+                    <g id="pie-slices"></g>
+                </g>
+                
+                <!-- Donut Chart (Bottom Right) -->
+                <g id="donut-chart" transform="translate(900, 550)">
+                    <g id="donut-slices"></g>
+                </g>
+                
+                <!-- Gauge Chart (Bottom Center) -->
+                <g id="gauge-chart" transform="translate(600, 650)">
+                    <path id="gauge-bg" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="8"/>
+                    <path id="gauge-fill" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="8" stroke-linecap="round"/>
+                    <circle id="gauge-center" r="5" fill="rgba(255,255,255,0.9)"/>
+                </g>
+                
+                <!-- Floating Data Points -->
+                <g id="floating-points">
+                    <circle id="point1" r="3" fill="rgba(255,255,255,0.7)"/>
+                    <circle id="point2" r="4" fill="rgba(255,255,255,0.8)"/>
+                    <circle id="point3" r="2" fill="rgba(255,255,255,0.6)"/>
+                    <circle id="point4" r="5" fill="rgba(255,255,255,0.9)"/>
+                    <circle id="point5" r="3" fill="rgba(255,255,255,0.5)"/>
+                    <circle id="point6" r="4" fill="rgba(255,255,255,0.7)"/>
+                </g>
+                
+                <!-- Data Streams -->
+                <g id="data-streams">
+                    <g id="stream1"></g>
+                    <g id="stream2"></g>
+                    <g id="stream3"></g>
+                </g>
+                
+                <!-- Network Nodes -->
+                <g id="network-nodes">
+                    <g id="nodes"></g>
+                    <g id="connections"></g>
+                </g>
+            </svg>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 animate__animated animate__fadeInLeft">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-yellow-300 typing-text">Chetan</span></h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 animate__animated animate__fadeIn animate__delay-1s">Data Analyst</h2>
-                     <p class="text-lg mb-8 opacity-90 animate__animated animate__fadeIn animate__delay-2s">I create impactful data solutions  that help <br>businesses grow and thrive.</p>
-                    <div class="flex space-x-4 animate__animated animate__fadeIn animate__delay-3s"> 
-                        <a href="#projects" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300 pulse">View My Work</a>
-                        <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition duration-300">Contact Me</a>
+                <div class="md:w-1/2 text-center md:text-left text-white">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 slide-in-left">Hi, I'm <span class="text-yellow-300 pulse-animation">Your Name</span></h1>
+                    <p class="text-xl sm:text-2xl mb-8 slide-in-left stagger-2">I'm a <span id="typed-text" class="font-semibold typewriter-cursor"></span></p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 slide-in-left stagger-3">
+                        <a href="#projects" class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 bounce-in stagger-4">View My Work</a>
+                        <a href="#contact" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 bounce-in stagger-5">Contact Me</a>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center animate__animated animate__fadeInRight">
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-white/20 flex items-center justify-center rotate-in">
-                        <!-- <svg class="w-48 h-48 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-                        </svg> -->
-                        <img src="image/chetan2.png" alt="" style="border-radius: 50%;">
+                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 slide-in-right">
+                        <div class="absolute inset-0 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm border border-white border-opacity-20 flex items-center justify-center float-animation">
+                            <svg class="w-40 h-40 text-white rotate-slow" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                            </svg>
+                        </div>
+                        <!-- Floating particles -->
+                        <div class="absolute top-10 left-10 w-4 h-4 bg-yellow-300 rounded-full opacity-70 float-animation stagger-1"></div>
+                        <div class="absolute top-20 right-8 w-3 h-3 bg-pink-300 rounded-full opacity-60 float-animation stagger-3"></div>
+                        <div class="absolute bottom-16 left-6 w-2 h-2 bg-blue-300 rounded-full opacity-80 float-animation stagger-2"></div>
+                        <div class="absolute bottom-8 right-12 w-5 h-5 bg-purple-300 rounded-full opacity-50 float-animation stagger-4"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
@@ -912,10 +1135,688 @@ nav{
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        menuToggle.addEventListener('click', () => {
+         // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
         
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Typing effect
+        const typedTextElement = document.getElementById('typed-text');
+        const professions = ['Web Developer', 'UI/UX Designer', 'Creative Thinker'];
+        let professionIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        
+        function typeText() {
+            const currentProfession = professions[professionIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentProfession.substring(0, charIndex - 1);
+                charIndex--;
+                typingDelay = 50;
+            } else {
+                typedTextElement.textContent = currentProfession.substring(0, charIndex + 1);
+                charIndex++;
+                typingDelay = 150;
+            }
+            
+            if (!isDeleting && charIndex === currentProfession.length) {
+                isDeleting = true;
+                typingDelay = 1500; // Pause at the end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                professionIndex = (professionIndex + 1) % professions.length;
+                typingDelay = 500; // Pause before typing next word
+            }
+            
+            setTimeout(typeText, typingDelay);
+        }
+        
+        // Start typing effect
+        setTimeout(typeText, 1000);
+        
+        // Animated Charts System
+        class AnimatedCharts {
+            constructor() {
+                this.time = 0;
+                this.lineData = [];
+                this.areaData = [];
+                this.scatterData = [];
+                this.bubbleData = [];
+                this.radarData = [];
+                this.networkNodes = [];
+                this.dataStreams = [];
+                this.barData = [65, 45, 80, 35, 70, 55];
+                this.pieData = [30, 25, 20, 15, 10];
+                this.donutData = [40, 30, 20, 10];
+                this.gaugeValue = 0;
+                
+                this.floatingPoints = [
+                    { element: document.getElementById('point1'), x: 0, y: 0, vx: 1, vy: 1 },
+                    { element: document.getElementById('point2'), x: 0, y: 0, vx: -1, vy: 1.5 },
+                    { element: document.getElementById('point3'), x: 0, y: 0, vx: 1.2, vy: -1 },
+                    { element: document.getElementById('point4'), x: 0, y: 0, vx: -1.5, vy: -1.2 },
+                    { element: document.getElementById('point5'), x: 0, y: 0, vx: 0.8, vy: 1.3 },
+                    { element: document.getElementById('point6'), x: 0, y: 0, vx: -1.1, vy: -0.9 }
+                ];
+                
+                this.init();
+                this.animate();
+            }
+            
+            init() {
+                // Initialize line chart data
+                for (let i = 0; i <= 15; i++) {
+                    this.lineData.push({
+                        x: i * 20,
+                        y1: 100 + Math.sin(i * 0.5) * 40,
+                        y2: 120 + Math.cos(i * 0.3) * 30
+                    });
+                }
+                
+                // Initialize area chart data
+                for (let i = 0; i <= 12; i++) {
+                    this.areaData.push({
+                        x: i * 25,
+                        y: 80 + Math.sin(i * 0.4) * 35
+                    });
+                }
+                
+                // Initialize scatter plot data
+                for (let i = 0; i < 20; i++) {
+                    this.scatterData.push({
+                        x: Math.random() * 200,
+                        y: Math.random() * 150,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5
+                    });
+                }
+                
+                // Initialize bubble chart data
+                for (let i = 0; i < 8; i++) {
+                    this.bubbleData.push({
+                        x: Math.random() * 180,
+                        y: Math.random() * 120,
+                        r: 10 + Math.random() * 20,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3
+                    });
+                }
+                
+                // Initialize radar chart data
+                const radarPoints = 6;
+                for (let i = 0; i < radarPoints; i++) {
+                    this.radarData.push({
+                        angle: (i / radarPoints) * 2 * Math.PI,
+                        value: 30 + Math.random() * 40
+                    });
+                }
+                
+                // Initialize network nodes
+                for (let i = 0; i < 12; i++) {
+                    this.networkNodes.push({
+                        x: 200 + Math.random() * 800,
+                        y: 200 + Math.random() * 400,
+                        r: 3 + Math.random() * 5,
+                        connections: []
+                    });
+                }
+                
+                // Create connections between nodes
+                this.networkNodes.forEach((node, index) => {
+                    const numConnections = Math.floor(Math.random() * 3) + 1;
+                    for (let i = 0; i < numConnections; i++) {
+                        const targetIndex = Math.floor(Math.random() * this.networkNodes.length);
+                        if (targetIndex !== index && !node.connections.includes(targetIndex)) {
+                            node.connections.push(targetIndex);
+                        }
+                    }
+                });
+                
+                // Initialize data streams
+                for (let i = 0; i < 3; i++) {
+                    this.dataStreams.push({
+                        particles: [],
+                        path: this.generateStreamPath(i)
+                    });
+                    
+                    // Add particles to each stream
+                    for (let j = 0; j < 15; j++) {
+                        this.dataStreams[i].particles.push({
+                            position: Math.random(),
+                            speed: 0.005 + Math.random() * 0.01,
+                            size: 1 + Math.random() * 2
+                        });
+                    }
+                }
+                
+                // Initialize floating points
+                this.floatingPoints.forEach(point => {
+                    point.x = Math.random() * 1200;
+                    point.y = Math.random() * 800;
+                });
+                
+                this.createBarChart();
+                this.createPieChart();
+                this.createDonutChart();
+                this.createScatterPlot();
+                this.createBubbleChart();
+                this.createRadarChart();
+                this.createGaugeChart();
+                this.createNetworkNodes();
+            }
+            
+            createBarChart() {
+                const barsContainer = document.getElementById('bars');
+                const barWidth = 30;
+                const barSpacing = 40;
+                
+                this.barData.forEach((value, index) => {
+                    const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    bar.setAttribute('x', index * barSpacing);
+                    bar.setAttribute('y', 150 - value);
+                    bar.setAttribute('width', barWidth);
+                    bar.setAttribute('height', 0);
+                    bar.setAttribute('fill', `rgba(255,255,255,${0.6 + index * 0.1})`);
+                    bar.setAttribute('rx', '2');
+                    bar.id = `bar-${index}`;
+                    barsContainer.appendChild(bar);
+                });
+            }
+            
+            createPieChart() {
+                const pieContainer = document.getElementById('pie-slices');
+                const radius = 60;
+                let currentAngle = 0;
+                const colors = [0.8, 0.7, 0.6, 0.5, 0.4];
+                
+                this.pieData.forEach((value, index) => {
+                    const angle = (value / 100) * 2 * Math.PI;
+                    const x1 = Math.cos(currentAngle) * radius;
+                    const y1 = Math.sin(currentAngle) * radius;
+                    const x2 = Math.cos(currentAngle + angle) * radius;
+                    const y2 = Math.sin(currentAngle + angle) * radius;
+                    
+                    const largeArcFlag = angle > Math.PI ? 1 : 0;
+                    
+                    const pathData = [
+                        `M 0 0`,
+                        `L ${x1} ${y1}`,
+                        `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                        'Z'
+                    ].join(' ');
+                    
+                    const slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    slice.setAttribute('d', pathData);
+                    slice.setAttribute('fill', `rgba(255,255,255,${colors[index]})`);
+                    slice.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+                    slice.setAttribute('stroke-width', '1');
+                    slice.id = `pie-slice-${index}`;
+                    pieContainer.appendChild(slice);
+                    
+                    currentAngle += angle;
+                });
+            }
+            
+            createDonutChart() {
+                const donutContainer = document.getElementById('donut-slices');
+                const outerRadius = 50;
+                const innerRadius = 25;
+                let currentAngle = 0;
+                const colors = [0.9, 0.7, 0.5, 0.3];
+                
+                this.donutData.forEach((value, index) => {
+                    const angle = (value / 100) * 2 * Math.PI;
+                    const x1 = Math.cos(currentAngle) * outerRadius;
+                    const y1 = Math.sin(currentAngle) * outerRadius;
+                    const x2 = Math.cos(currentAngle + angle) * outerRadius;
+                    const y2 = Math.sin(currentAngle + angle) * outerRadius;
+                    const x3 = Math.cos(currentAngle + angle) * innerRadius;
+                    const y3 = Math.sin(currentAngle + angle) * innerRadius;
+                    const x4 = Math.cos(currentAngle) * innerRadius;
+                    const y4 = Math.sin(currentAngle) * innerRadius;
+                    
+                    const largeArcFlag = angle > Math.PI ? 1 : 0;
+                    
+                    const pathData = [
+                        `M ${x1} ${y1}`,
+                        `A ${outerRadius} ${outerRadius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                        `L ${x3} ${y3}`,
+                        `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${x4} ${y4}`,
+                        'Z'
+                    ].join(' ');
+                    
+                    const slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    slice.setAttribute('d', pathData);
+                    slice.setAttribute('fill', `rgba(255,255,255,${colors[index]})`);
+                    slice.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+                    slice.setAttribute('stroke-width', '1');
+                    slice.id = `donut-slice-${index}`;
+                    donutContainer.appendChild(slice);
+                    
+                    currentAngle += angle;
+                });
+            }
+            
+            createScatterPlot() {
+                const scatterContainer = document.getElementById('scatter-points');
+                
+                this.scatterData.forEach((point, index) => {
+                    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    dot.setAttribute('cx', point.x);
+                    dot.setAttribute('cy', point.y);
+                    dot.setAttribute('r', 2);
+                    dot.setAttribute('fill', `rgba(255,255,255,${0.5 + Math.random() * 0.4})`);
+                    dot.id = `scatter-${index}`;
+                    scatterContainer.appendChild(dot);
+                });
+            }
+            
+            createBubbleChart() {
+                const bubbleContainer = document.getElementById('bubble-points');
+                
+                this.bubbleData.forEach((bubble, index) => {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', bubble.x);
+                    circle.setAttribute('cy', bubble.y);
+                    circle.setAttribute('r', bubble.r);
+                    circle.setAttribute('fill', 'url(#bubbleGradient)');
+                    circle.setAttribute('opacity', 0.6);
+                    circle.id = `bubble-${index}`;
+                    bubbleContainer.appendChild(circle);
+                });
+            }
+            
+            createRadarChart() {
+                const radarWeb = document.getElementById('radar-web');
+                const radius = 60;
+                const levels = 4;
+                
+                // Create web lines
+                for (let level = 1; level <= levels; level++) {
+                    const r = (radius / levels) * level;
+                    const points = [];
+                    
+                    this.radarData.forEach(point => {
+                        const x = Math.cos(point.angle - Math.PI / 2) * r;
+                        const y = Math.sin(point.angle - Math.PI / 2) * r;
+                        points.push(`${x},${y}`);
+                    });
+                    
+                    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                    polygon.setAttribute('points', points.join(' '));
+                    polygon.setAttribute('fill', 'none');
+                    polygon.setAttribute('stroke', `rgba(255,255,255,${0.2 + level * 0.1})`);
+                    polygon.setAttribute('stroke-width', '1');
+                    radarWeb.appendChild(polygon);
+                }
+                
+                // Create axis lines
+                this.radarData.forEach(point => {
+                    const x = Math.cos(point.angle - Math.PI / 2) * radius;
+                    const y = Math.sin(point.angle - Math.PI / 2) * radius;
+                    
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', 0);
+                    line.setAttribute('y1', 0);
+                    line.setAttribute('x2', x);
+                    line.setAttribute('y2', y);
+                    line.setAttribute('stroke', 'rgba(255,255,255,0.3)');
+                    line.setAttribute('stroke-width', '1');
+                    radarWeb.appendChild(line);
+                });
+            }
+            
+            createGaugeChart() {
+                const gaugeRadius = 40;
+                const startAngle = -Math.PI;
+                const endAngle = 0;
+                
+                // Background arc
+                const gaugeBg = document.getElementById('gauge-bg');
+                const bgPath = this.createArcPath(0, 0, gaugeRadius, startAngle, endAngle);
+                gaugeBg.setAttribute('d', bgPath);
+            }
+            
+            createNetworkNodes() {
+                const nodesContainer = document.getElementById('nodes');
+                const connectionsContainer = document.getElementById('connections');
+                
+                // Create connections first (so they appear behind nodes)
+                this.networkNodes.forEach((node, index) => {
+                    node.connections.forEach(targetIndex => {
+                        const target = this.networkNodes[targetIndex];
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', node.x);
+                        line.setAttribute('y1', node.y);
+                        line.setAttribute('x2', target.x);
+                        line.setAttribute('y2', target.y);
+                        line.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+                        line.setAttribute('stroke-width', '1');
+                        line.id = `connection-${index}-${targetIndex}`;
+                        connectionsContainer.appendChild(line);
+                    });
+                });
+                
+                // Create nodes
+                this.networkNodes.forEach((node, index) => {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', node.x);
+                    circle.setAttribute('cy', node.y);
+                    circle.setAttribute('r', node.r);
+                    circle.setAttribute('fill', 'rgba(255,255,255,0.8)');
+                    circle.id = `node-${index}`;
+                    nodesContainer.appendChild(circle);
+                });
+            }
+            
+            generateStreamPath(streamIndex) {
+                const paths = [
+                    // Stream 1: Curved path from top-left to bottom-right
+                    { start: { x: 50, y: 100 }, control1: { x: 300, y: 200 }, control2: { x: 600, y: 300 }, end: { x: 1000, y: 500 } },
+                    // Stream 2: Wave path across middle
+                    { start: { x: 100, y: 400 }, control1: { x: 400, y: 300 }, control2: { x: 700, y: 500 }, end: { x: 1100, y: 400 } },
+                    // Stream 3: Diagonal path from bottom-left to top-right
+                    { start: { x: 200, y: 600 }, control1: { x: 500, y: 400 }, control2: { x: 800, y: 200 }, end: { x: 1000, y: 100 } }
+                ];
+                
+                return paths[streamIndex];
+            }
+            
+            createArcPath(x, y, radius, startAngle, endAngle) {
+                const start = {
+                    x: x + radius * Math.cos(startAngle),
+                    y: y + radius * Math.sin(startAngle)
+                };
+                const end = {
+                    x: x + radius * Math.cos(endAngle),
+                    y: y + radius * Math.sin(endAngle)
+                };
+                
+                const largeArcFlag = endAngle - startAngle <= Math.PI ? "0" : "1";
+                
+                return [
+                    "M", start.x, start.y,
+                    "A", radius, radius, 0, largeArcFlag, 1, end.x, end.y
+                ].join(" ");
+            }
+            
+            animate() {
+                this.time += 0.02;
+                
+                // Animate line chart
+                const line1Points = [];
+                const line2Points = [];
+                const area1Points = [];
+                const dotsContainer = document.getElementById('line-dots');
+                dotsContainer.innerHTML = '';
+                
+                this.lineData.forEach((point, index) => {
+                    const animatedY1 = point.y1 + Math.sin(this.time + index * 0.3) * 20;
+                    const animatedY2 = point.y2 + Math.cos(this.time + index * 0.2) * 15;
+                    
+                    line1Points.push(`${point.x},${animatedY1}`);
+                    line2Points.push(`${point.x},${animatedY2}`);
+                    area1Points.push(`${point.x},${animatedY1}`);
+                    
+                    // Add animated dots
+                    if (index % 3 === 0) {
+                        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                        dot.setAttribute('cx', point.x);
+                        dot.setAttribute('cy', animatedY1);
+                        dot.setAttribute('r', 2 + Math.sin(this.time + index) * 0.5);
+                        dot.setAttribute('fill', 'rgba(255,255,255,0.9)');
+                        dotsContainer.appendChild(dot);
+                    }
+                });
+                
+                // Close area polygon
+                const lastPoint = this.lineData[this.lineData.length - 1];
+                const firstPoint = this.lineData[0];
+                area1Points.push(`${lastPoint.x},150`);
+                area1Points.push(`${firstPoint.x},150`);
+                
+                document.getElementById('line1').setAttribute('points', line1Points.join(' '));
+                document.getElementById('line2').setAttribute('points', line2Points.join(' '));
+                document.getElementById('area1').setAttribute('points', area1Points.join(' '));
+                
+                // Animate area chart
+                const areaPoints = [];
+                const areaLinePoints = [];
+                
+                this.areaData.forEach((point, index) => {
+                    const animatedY = point.y + Math.sin(this.time + index * 0.4) * 25;
+                    areaPoints.push(`${point.x},${animatedY}`);
+                    areaLinePoints.push(`${point.x},${animatedY}`);
+                });
+                
+                // Close area polygon
+                const lastAreaPoint = this.areaData[this.areaData.length - 1];
+                const firstAreaPoint = this.areaData[0];
+                areaPoints.push(`${lastAreaPoint.x},150`);
+                areaPoints.push(`${firstAreaPoint.x},150`);
+                
+                document.getElementById('area-fill').setAttribute('points', areaPoints.join(' '));
+                document.getElementById('area-line').setAttribute('points', areaLinePoints.join(' '));
+                
+                // Animate scatter plot
+                this.scatterData.forEach((point, index) => {
+                    point.x += point.vx;
+                    point.y += point.vy;
+                    
+                    // Bounce off boundaries
+                    if (point.x <= 0 || point.x >= 200) {
+                        point.vx *= -1;
+                        point.x = Math.max(0, Math.min(200, point.x));
+                    }
+                    if (point.y <= 0 || point.y >= 150) {
+                        point.vy *= -1;
+                        point.y = Math.max(0, Math.min(150, point.y));
+                    }
+                    
+                    const dot = document.getElementById(`scatter-${index}`);
+                    if (dot) {
+                        dot.setAttribute('cx', point.x);
+                        dot.setAttribute('cy', point.y);
+                        dot.setAttribute('r', 2 + Math.sin(this.time + index * 0.5) * 0.5);
+                    }
+                });
+                
+                // Animate bubble chart
+                this.bubbleData.forEach((bubble, index) => {
+                    bubble.x += bubble.vx;
+                    bubble.y += bubble.vy;
+                    
+                    // Bounce off boundaries
+                    if (bubble.x <= bubble.r || bubble.x >= 180 - bubble.r) {
+                        bubble.vx *= -1;
+                        bubble.x = Math.max(bubble.r, Math.min(180 - bubble.r, bubble.x));
+                    }
+                    if (bubble.y <= bubble.r || bubble.y >= 120 - bubble.r) {
+                        bubble.vy *= -1;
+                        bubble.y = Math.max(bubble.r, Math.min(120 - bubble.r, bubble.y));
+                    }
+                    
+                    const circle = document.getElementById(`bubble-${index}`);
+                    if (circle) {
+                        circle.setAttribute('cx', bubble.x);
+                        circle.setAttribute('cy', bubble.y);
+                        const animatedRadius = bubble.r + Math.sin(this.time + index * 0.7) * 3;
+                        circle.setAttribute('r', Math.max(5, animatedRadius));
+                    }
+                });
+                
+                // Animate radar chart
+                const radarPoints = [];
+                this.radarData.forEach((point, index) => {
+                    const animatedValue = point.value + Math.sin(this.time + index * 0.6) * 15;
+                    const x = Math.cos(point.angle - Math.PI / 2) * animatedValue;
+                    const y = Math.sin(point.angle - Math.PI / 2) * animatedValue;
+                    radarPoints.push(`${x},${y}`);
+                });
+                
+                document.getElementById('radar-data').setAttribute('points', radarPoints.join(' '));
+                
+                // Animate gauge chart
+                this.gaugeValue += 0.01;
+                const gaugeProgress = (Math.sin(this.gaugeValue) + 1) / 2; // 0 to 1
+                const gaugeAngle = -Math.PI + (gaugeProgress * Math.PI);
+                
+                const gaugeFill = document.getElementById('gauge-fill');
+                const fillPath = this.createArcPath(0, 0, 40, -Math.PI, gaugeAngle);
+                gaugeFill.setAttribute('d', fillPath);
+                
+                // Animate bar chart
+                this.barData.forEach((value, index) => {
+                    const bar = document.getElementById(`bar-${index}`);
+                    const animatedHeight = value + Math.sin(this.time + index * 0.5) * 10;
+                    bar.setAttribute('height', Math.max(0, animatedHeight));
+                    bar.setAttribute('y', 150 - Math.max(0, animatedHeight));
+                });
+                
+                // Animate pie chart rotation
+                const pieChart = document.getElementById('pie-chart');
+                pieChart.setAttribute('transform', `translate(200, 550) rotate(${this.time * 10})`);
+                
+                // Animate donut chart rotation (opposite direction)
+                const donutChart = document.getElementById('donut-chart');
+                donutChart.setAttribute('transform', `translate(900, 550) rotate(${-this.time * 15})`);
+                
+                // Animate network nodes
+                this.networkNodes.forEach((node, index) => {
+                    const nodeElement = document.getElementById(`node-${index}`);
+                    if (nodeElement) {
+                        const pulseSize = node.r + Math.sin(this.time + index * 0.8) * 1;
+                        nodeElement.setAttribute('r', pulseSize);
+                    }
+                    
+                    // Update connections
+                    node.connections.forEach(targetIndex => {
+                        const connection = document.getElementById(`connection-${index}-${targetIndex}`);
+                        if (connection) {
+                            const opacity = 0.2 + Math.sin(this.time + index + targetIndex) * 0.1;
+                            connection.setAttribute('stroke', `rgba(255,255,255,${Math.max(0.1, opacity)})`);
+                        }
+                    });
+                });
+                
+                // Animate data streams
+                this.dataStreams.forEach((stream, streamIndex) => {
+                    const streamContainer = document.getElementById(`stream${streamIndex + 1}`);
+                    streamContainer.innerHTML = '';
+                    
+                    stream.particles.forEach((particle, particleIndex) => {
+                        particle.position += particle.speed;
+                        if (particle.position > 1) particle.position = 0;
+                        
+                        // Calculate position along bezier curve
+                        const t = particle.position;
+                        const path = stream.path;
+                        
+                        const x = Math.pow(1-t, 3) * path.start.x + 
+                                 3 * Math.pow(1-t, 2) * t * path.control1.x + 
+                                 3 * (1-t) * Math.pow(t, 2) * path.control2.x + 
+                                 Math.pow(t, 3) * path.end.x;
+                        
+                        const y = Math.pow(1-t, 3) * path.start.y + 
+                                 3 * Math.pow(1-t, 2) * t * path.control1.y + 
+                                 3 * (1-t) * Math.pow(t, 2) * path.control2.y + 
+                                 Math.pow(t, 3) * path.end.y;
+                        
+                        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                        circle.setAttribute('cx', x);
+                        circle.setAttribute('cy', y);
+                        circle.setAttribute('r', particle.size);
+                        circle.setAttribute('fill', `rgba(255,255,255,${0.3 + particle.size * 0.2})`);
+                        streamContainer.appendChild(circle);
+                    });
+                });
+                
+                // Animate floating points
+                this.floatingPoints.forEach(point => {
+                    point.x += point.vx;
+                    point.y += point.vy;
+                    
+                    // Bounce off edges
+                    if (point.x <= 0 || point.x >= 1200) {
+                        point.vx *= -1;
+                        point.x = Math.max(0, Math.min(1200, point.x));
+                    }
+                    if (point.y <= 0 || point.y >= 800) {
+                        point.vy *= -1;
+                        point.y = Math.max(0, Math.min(800, point.y));
+                    }
+                    
+                    // Add randomness
+                    point.vx += (Math.random() - 0.5) * 0.05;
+                    point.vy += (Math.random() - 0.5) * 0.05;
+                    
+                    // Limit speed
+                    const maxSpeed = 1.5;
+                    point.vx = Math.max(-maxSpeed, Math.min(maxSpeed, point.vx));
+                    point.vy = Math.max(-maxSpeed, Math.min(maxSpeed, point.vy));
+                    
+                    // Update position
+                    point.element.setAttribute('cx', point.x);
+                    point.element.setAttribute('cy', point.y);
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize animated charts
+        const charts = new AnimatedCharts();
+        
+        // Scroll reveal animation
+        const sections = document.querySelectorAll('.section-fade');
+        
+        function checkSections() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Check sections on load
+        window.addEventListener('load', checkSections);
+        
+        // Check sections on scroll
+        window.addEventListener('scroll', checkSections);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
         // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1143,3 +2044,4 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
