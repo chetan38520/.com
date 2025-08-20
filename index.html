@@ -2265,98 +2265,98 @@ nav{
                 }
             });
         });
-        // Contact Form Handling
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
+        // // Contact Form Handling
+        // const contactForm = document.getElementById('contact-form');
+        // const formMessage = document.getElementById('form-message');
         
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        // contactForm.addEventListener('submit', function(e) {
+        //     e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+        //     // Get form values
+        //     const name = document.getElementById('name').value;
+        //     const email = document.getElementById('email').value;
+        //     const subject = document.getElementById('subject').value;
+        //     const message = document.getElementById('message').value;
             
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                formMessage.textContent = 'Please fill in all fields.';
-                formMessage.classList.remove('hidden', 'text-green-600');
-                formMessage.classList.add('text-red-600');
-                return;
-            }
+        //     // Simple validation
+        //     if (!name || !email || !subject || !message) {
+        //         formMessage.textContent = 'Please fill in all fields.';
+        //         formMessage.classList.remove('hidden', 'text-green-600');
+        //         formMessage.classList.add('text-red-600');
+        //         return;
+        //     }
             
-            // Demo form submission (in a real application, you would send this to a server)
-            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            formMessage.classList.remove('hidden', 'text-red-600');
-            formMessage.classList.add('text-green-600', 'animate__animated', 'animate__fadeIn');
+        //     // Demo form submission (in a real application, you would send this to a server)
+        //     formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+        //     formMessage.classList.remove('hidden', 'text-red-600');
+        //     formMessage.classList.add('text-green-600', 'animate__animated', 'animate__fadeIn');
             
-            // Reset form
-            contactForm.reset();
+        //     // Reset form
+        //     contactForm.reset();
             
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
-        });
+        //     // Hide success message after 5 seconds
+        //     setTimeout(() => {
+        //         formMessage.classList.add('hidden');
+        //     }, 5000);
+        // });
         
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const staggerItems = document.querySelectorAll('.stagger-item');
-        const progressBars = document.querySelectorAll('.progress-bar');
+        // // Scroll animations
+        // const fadeElements = document.querySelectorAll('.fade-in');
+        // const staggerItems = document.querySelectorAll('.stagger-item');
+        // const progressBars = document.querySelectorAll('.progress-bar');
         
-        // Intersection Observer for fade-in elements
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        // // Intersection Observer for fade-in elements
+        // const fadeObserver = new IntersectionObserver((entries) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             entry.target.classList.add('appear');
+        //             fadeObserver.unobserve(entry.target);
+        //         }
+        //     });
+        // }, { threshold: 0.1 });
         
-        fadeElements.forEach(element => {
-            fadeObserver.observe(element);
-        });
+        // fadeElements.forEach(element => {
+        //     fadeObserver.observe(element);
+        // });
         
-        // Intersection Observer for stagger items
-        const staggerObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Add staggered animation with delay
-                    setTimeout(() => {
-                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    staggerObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        // // Intersection Observer for stagger items
+        // const staggerObserver = new IntersectionObserver((entries) => {
+        //     entries.forEach((entry, index) => {
+        //         if (entry.isIntersecting) {
+        //             // Add staggered animation with delay
+        //             setTimeout(() => {
+        //                 entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        //                 entry.target.style.opacity = '1';
+        //                 entry.target.style.transform = 'translateY(0)';
+        //             }, index * 100);
+        //             staggerObserver.unobserve(entry.target);
+        //         }
+        //     });
+        // }, { threshold: 0.1 });
         
-        staggerItems.forEach(item => {
-            staggerObserver.observe(item);
-        });
+        // staggerItems.forEach(item => {
+        //     staggerObserver.observe(item);
+        // });
         
-        // Intersection Observer for progress bars
-        const progressObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const width = entry.target.getAttribute('data-width');
-                    entry.target.style.width = width;
-                    progressObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        // // Intersection Observer for progress bars
+        // const progressObserver = new IntersectionObserver((entries) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             const width = entry.target.getAttribute('data-width');
+        //             entry.target.style.width = width;
+        //             progressObserver.unobserve(entry.target);
+        //         }
+        //     });
+        // }, { threshold: 0.1 });
         
-        progressBars.forEach(bar => {
-            progressObserver.observe(bar);
-        });
+        // progressBars.forEach(bar => {
+        //     progressObserver.observe(bar);
+        // });
         
-        // Animate typing text on load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add any additional initialization here
-        });
+        // // Animate typing text on load
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // Add any additional initialization here
+        // });
 
 
 
@@ -2448,6 +2448,7 @@ const btn = document.querySelector('#projects a.inline-block');
   // Initialize on page load and on resize
   window.addEventListener('load', () => updateVisibleProjects(false));
   window.addEventListener('resize', () => updateVisibleProjects(false));
+        
 
   // Button toggle event
   btn.addEventListener('click', function(e) {
@@ -2457,6 +2458,7 @@ const btn = document.querySelector('#projects a.inline-block');
     } else {
       updateVisibleProjects(false);
       document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
+      
     }
   });
 
@@ -2745,6 +2747,7 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
