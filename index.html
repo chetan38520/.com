@@ -1,0 +1,2384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            top: -100px;
+            right: -100px;
+            animation: float 8s infinite ease-in-out;
+            box-shadow: 0px 0px 8px 2px black;
+        }
+        
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            bottom: -50px;
+            left: -50px;
+            animation: float 6s infinite ease-in-out reverse;
+            box-shadow: 0px 0px 8px 2px black;
+        }
+
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 20px) rotate(10deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        
+       .project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform; /* GPU acceleration */
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.08); /* 👈 
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+        
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.08);  /* 👈 combine */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+         /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Gradient animation */
+        /* @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        } */
+        
+        .animated-gradient {
+           
+            background: linear-gradient(90deg, rgba(13, 0, 255, 1) 0%, rgba(170, 0, 255, 1) 50%, rgba(242, 0, 222, 1) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* Bounce in animation */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(0);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s ease-out;
+        }
+        
+        /* Slide in from left */
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        /* Slide in from right */
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        /* Fade in up */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Rotate animation */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+       
+      
+        
+        /* Typewriter cursor */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .typewriter-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #F59E0B;
+            font-weight: bold;
+        }
+        
+        /* Stagger animation delays */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #fff;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink 1s step-end infinite;
+        }
+        
+        .rotate-in {
+            animation: rotateIn 1s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-90deg);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0);
+                opacity: 1;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes bounceIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .progress-bar {
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        /* Contact Section Animations */
+.contact-particle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #4F46E5, #7C3AED);
+    border-radius: 50%;
+    animation: contactFloat 8s ease-in-out infinite;
+}
+
+@keyframes contactFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+    25% { transform: translateY(-20px) rotate(90deg); opacity: 1; }
+    50% { transform: translateY(-40px) rotate(180deg); opacity: 0.8; }
+    75% { transform: translateY(-20px) rotate(270deg); opacity: 1; }
+}
+
+.animated-underline {
+    animation: underlineGrow 1s ease-out 0.5s both;
+}
+
+@keyframes underlineGrow {
+    0% { width: 0; }
+    100% { width: 6rem; }
+}
+
+.contact-card-hover {
+    transition: all 0.3s ease;
+}
+
+.contact-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.contact-bg-pattern {
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
+        radial-gradient(circle at 40% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 60px 60px, 30px 30px, 40px 40px;
+    animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 50px 50px, -60px 60px, 30px -30px, -40px 40px; }
+}
+
+.contact-info-item {
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+    transform: translateX(10px);
+}
+
+.contact-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.contact-icon:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.social-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+}
+
+.social-icon:hover::after {
+    width: 120%;
+    height: 120%;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-input {
+    position: relative;
+    outline: none;
+    z-index: 1;
+}
+/* Autofill background color override karne ke liye */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+
+
+input::-webkit-autofill {
+  box-shadow: 0 0 0px 1000px white inset !important; /* autofill background remove */
+  -webkit-text-fill-color: black !important;
+}
+
+.form-input:focus + .input-highlight {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4F46E5, #7C3AED);
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.form-input:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-input:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+}
+
+.submit-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.button-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+}
+
+.submit-button:active .button-ripple {
+    width: 200px;
+    height: 200px;
+    transition: all 0.2s ease;
+}
+
+.success-message {
+    animation: successSlide 0.5s ease-out;
+}
+
+@keyframes successSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-progress {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+.character-count {
+    transition: color 0.3s ease;
+}
+
+.character-count.warning {
+    color: #F59E0B;
+}
+
+.character-count.error {
+    color: #EF4444;
+}
+
+/* Fade in up animation (needed for form-progress) */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+        /* Certificate Styles */
+.certificate-item {
+    transition: all 0.3s ease;
+}
+
+.certificate-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#certificate-modal {
+    transition: opacity 0.3s ease;
+}
+
+#close-modal {
+    transition: transform 0.2s ease;
+}
+
+#close-modal:hover {
+    transform: rotate(90deg);
+}
+.projectimg{
+    width: 100%;
+    height: 100%;
+}
+ #projects .project-card:nth-child(n+4) {
+    display: none;
+  }
+ #scroll-progress {
+  height: 4px;
+  background: linear-gradient(to right, #525ce7, #525ce7); /* yellow tones */
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.25s ease-out;
+}
+nav{
+    background-color: rgba(255, 255, 255, 0.945);
+}
+
+      
+        
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .tooltip:hover::after,
+        .tooltip:hover::before {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class=" shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">Portfolio</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">About</a>
+                <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Projects</a>
+                <a href="#resume" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Resume</a>
+                <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Skills</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+            </div>
+            
+            <!-- Mobile Navigation Toggle -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-indigo-600 font-medium py-2">About</a>
+                <a href="#projects" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Projects</a>
+                <a href="#skills" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Skills</a>
+                <a href="#contact" class="text-gray-700 hover:text-indigo-600 font-medium py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+<div id="scroll-progress" class="h-1 bg-yellow-300 fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out"></div>
+
+    <!-- Hero Section -->
+   
+<section id="home" class="animated-gradient min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <!-- Animated Charts Background -->
+       <div class="absolute inset-0 opacity-70">
+            <svg id="animated-charts" class="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+                <!-- Grid Lines -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+                    </pattern>
+                    <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.4" />
+                    </linearGradient>
+                    <linearGradient id="areaGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                    </linearGradient>
+                    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.5" />
+                    </linearGradient>
+                    <radialGradient id="bubbleGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                    </radialGradient>
+                    <radialGradient id="bubbleGradient2" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.7" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.2" />
+                    </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                
+                <!-- Line Chart (Top Left) -->
+                <g id="line-chart" transform="translate(50, 50)">
+                    <polyline id="line1" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="3" stroke-linecap="round"/>
+                    <polyline id="line2" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+                    <polygon id="area1" fill="url(#areaGradient)" opacity="0.7"/>
+                    <!-- Data points -->
+                    <g id="line-dots"></g>
+                </g>
+                
+                <!-- Bar Chart (Top Center) -->
+                <g id="bar-chart" transform="translate(500, 80)">
+                    <g id="bars"></g>
+                </g>
+                
+                <!-- Area Chart (Top Right) -->
+                <g id="area-chart" transform="translate(950, 60)">
+                    <polygon id="area-fill" fill="url(#areaGradient2)" opacity="0.8"/>
+                    <polyline id="area-line" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="3"/>
+                </g>
+                
+                <!-- Scatter Plot (Center Left) -->
+                <g id="scatter-plot" transform="translate(100, 300)">
+                    <g id="scatter-points"></g>
+                </g>
+                
+                <!-- Bubble Chart (Center Right) -->
+                <g id="bubble-chart" transform="translate(800, 300)">
+                    <g id="bubble-points"></g>
+                </g>
+                
+                <!-- Radar Chart (Center) -->
+                <g id="radar-chart" transform="translate(600, 400)">
+                    <g id="radar-web"></g>
+                    <polygon id="radar-data" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
+                </g>
+                
+                <!-- Pie Chart (Bottom Left) -->
+                <g id="pie-chart" transform="translate(200, 550)">
+                    <g id="pie-slices"></g>
+                </g>
+                
+                <!-- Donut Chart (Bottom Right) -->
+                <g id="donut-chart" transform="translate(900, 550)">
+                    <g id="donut-slices"></g>
+                </g>
+                
+                <!-- Gauge Chart (Bottom Center) -->
+                <g id="gauge-chart" transform="translate(600, 650)">
+                    <path id="gauge-bg" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="8"/>
+                    <path id="gauge-fill" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="8" stroke-linecap="round"/>
+                    <circle id="gauge-center" r="5" fill="rgba(255,255,255,0.9)"/>
+                </g>
+                
+                <!-- Floating Data Points -->
+                <g id="floating-points">
+                    <circle id="point1" r="4" fill="rgba(255,255,255,0.9)" opacity="0.9"/>
+                    <circle id="point2" r="5" fill="rgba(255,255,255,0.8)" opacity="0.8"/>
+                    <circle id="point3" r="3" fill="rgba(255,255,255,0.9)" opacity="0.9"/>
+                    <circle id="point4" r="6" fill="rgba(255,255,255,0.8)" opacity="0.8"/>
+                    <circle id="point5" r="4" fill="rgba(255,255,255,0.9)" opacity="0.9"/>
+                    <circle id="point6" r="5" fill="rgba(255,255,255,0.8)" opacity="0.8"/>
+                </g>
+                
+                <!-- Data Streams -->
+                <g id="data-streams">
+                    <g id="stream1"></g>
+                    <g id="stream2"></g>
+                    <g id="stream3"></g>
+                </g>
+                
+                <!-- Network Nodes -->
+                <g id="network-nodes">
+                    <g id="nodes"></g>
+                    <g id="connections"></g>
+                </g>
+            </svg>
+        </div>
+        
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 text-center md:text-left text-white">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 slide-in-left">Hi, I'm <span class="text-yellow-300 pulse-animation">Chetan</span></h1>
+                    <p class="text-xl sm:text-2xl mb-8 slide-in-left stagger-2">I'm a <span id="typed-text" class="font-semibold typewriter-cursor"></span></p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 slide-in-left stagger-3">
+                        <a href="#projects" class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 bounce-in stagger-4">View My Work</a>
+                        <a href="#contact" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105 bounce-in stagger-5">Contact Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 slide-in-right">
+                        <div class="absolute inset-0 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm border border-white border-opacity-20 flex items-center justify-center float-animation">
+                            <!-- <svg class="w-40 h-40 text-white rotate-slow" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                            </svg> -->
+                            <img src="image/chetan2.png" alt="" style="border-radius: 50%;">
+                        </div>
+                        <!-- Floating particles -->
+                        <div class="absolute top-10 left-10 w-4 h-4 bg-yellow-300 rounded-full opacity-70 float-animation stagger-1"></div>
+                        <div class="absolute top-20 right-8 w-3 h-3 bg-pink-300 rounded-full opacity-60 float-animation stagger-3"></div>
+                        <div class="absolute bottom-16 left-6 w-2 h-2 bg-blue-300 rounded-full opacity-80 float-animation stagger-2"></div>
+                        <div class="absolute bottom-8 right-12 w-5 h-5 bg-purple-300 rounded-full opacity-50 float-animation stagger-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 fade-in">
+                    <div class="bg-indigo-100 rounded-lg p-6 mx-auto max-w-xs bounce-in">
+                        <!-- <svg class="w-full h-64 text-indigo-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path> -->
+                            <img src="image/chetan.png" alt="" style="border-radius: 10px;">
+                        </svg>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4 fade-in">My Journey</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed fade-in">
+                        I am a dedicated and detail-oriented Data Analyst with a strong foundation in Python, Excel, SQL, and Power BI. I specialize in transforming complex data into meaningful insights that drive informed business decisions.
+                    </p>
+                    <p class="text-gray-700 mb-8 leading-relaxed fade-in">
+                       With a passion for problem-solving and continuous learning, I enjoy working on real-world data projects that combine technical skills with business strategy. My goal is to contribute to data-driven growth by delivering accurate analysis, clear visualizations, and impactful reports.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center fade-in">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4 float">
+                                <i class="fas fa-graduation-cap text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">B.Tech</h4>
+                                <p class="text-gray-600"> Dr. A.P.J. Abdul Kalam Technical University (AKTU)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center fade-in">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4 float">
+                                <i class="fas fa-briefcase text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Experience</h4>
+                                <p class="text-gray-600">Frasher</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center fade-in">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4 float">
+                                <i class="fas fa-map-marker-alt text-indigo-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">India</h4>
+                                <p class="text-gray-600">Modinagar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 fade-in">My Projects</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto fade-in">Here are some of my recent projects that showcase my skills and expertise.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+               <!-- project 1 -->
+                 <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-blue-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3h2c1.66 0 3 1.34 3 3v1H8v-1z"></path>
+                            <circle cx="12" cy="9" r="2"></circle>
+                        </svg> -->
+                        <img src="image/hospital analysis.png" alt="" class="projectimg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Hospital Analysis Project Using Power bi</h3>
+                        <p class="text-gray-600 mb-4">Hospital Analysis project using power bi provides insights into patient data, department performance bed occupancy, and medical staff efficiency for better decision maknig.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power bi</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power Query</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power Point</span>
+                            
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://1drv.ms/p/c/731094950e91191d/EXGFWRouP09OlX1URtgIB4MBRcFqdhsCtpFTF2M3-j4OyA?e=j4nrKshttps://1drv.ms/p/c/731094950e91191d/EXGFWRouP09OlX1URtgIB4MBRcFqdhsCtpFTF2M3-j4OyA?e=j4nrKshttps://1drv.ms/p/c/731094950e91191d/EXGFWRouP09OlX1URtgIB4MBRcFqdhsCtpFTF2M3-j4OyA?e=j4nrKs" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View Presentation</a>
+                            <a href="https://github.com/chetan38520/Hospital-analysis" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+           
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-indigo-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path>
+                        </svg> -->
+                        <img src="image/sales-analysis.jpeg" class="projectimg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Sales Analysis Using Excel</h3>
+                        <p class="text-gray-600 mb-4">An interactive sales dashboard visualizing city-wise sales, marketing channels, payment methods, discounts, customer demographics, product categories, and quantity-wise sales trends.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Excel</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">PowerQuery</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power Point</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://1drv.ms/x/s!Ah0ZkQ6VlBBzhp0n8CcCgMAYmRoTtA?e=5SBA9z" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View presentation</a>
+                            <a href="https://github.com/chetan38520/Sales-data-analysis/tree/main" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-purple-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M4 8h16v11H4z"></path>
+                            <path d="M20 6h-4l-2-2H8L6 6H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 14H4V8h16v12z"></path> -->
+                            <img src="image/uber.webp" alt="" class="projectimg">
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Uber Books Analysis Project Using Excel</h3>
+                        <p class="text-gray-600 mb-4">An interactive Excel dashboard showcasing sales insights by city, channel, payment type, discount, product category, and quantity.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Excel</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">PowerQuery</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power Point</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://1drv.ms/p/s!Ah0ZkQ6VlBBzhp0rDmC1SSap6E069g?e=zHrDUb" target="_blank" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View presentation</a>
+                            <a href="https://github.com/chetan38520/Uber-books-analysis/tree/main" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-blue-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3h2c1.66 0 3 1.34 3 3v1H8v-1z"></path>
+                            <circle cx="12" cy="9" r="2"></circle>
+                        </svg> -->
+                        <img src="image/diwali sales.jpg" alt="" class="projectimg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Diwali Sales Analisis Project Using Python</h3>
+                        <p class="text-gray-600 mb-4">A data analysis project examining consumer behavior and sales patterns during the Diwali festival through visualizations and insights.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Pandas</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Matplotlib</span>
+                            
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://1drv.ms/p/s!Ah0ZkQ6VlBBzhp0YwYe1ojeLzJUqsg?e=pAatXS" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View Presentation</a>
+                            <a href="https://github.com/chetan38520/Diwali-Sales-Analysis-Project/tree/main" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-blue-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3h2c1.66 0 3 1.34 3 3v1H8v-1z"></path>
+                            <circle cx="12" cy="9" r="2"></circle>
+                        </svg> -->
+                        <img src="image/bookstore.webp" alt="" class="projectimg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Onlie Bookstore data analyst project using SQL</h3>
+                        <p class="text-gray-600 mb-4">Analyzed online book sales using SQL to uncover trends in customer behavior, sales performance, and product categories through visual insights.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">SQL</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">MySql Workbench</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power Point</span>
+                            
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://1drv.ms/p/s!Ah0ZkQ6VlBBzhpx1ODrFAbMRx_f2Ew?e=cy06eG" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View Presentation</a>
+                            <a href="https://github.com/chetan38520/Online-bookstore-analysis" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Project 6 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-blue-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3h2c1.66 0 3 1.34 3 3v1H8v-1z"></path>
+                            <circle cx="12" cy="9" r="2"></circle>
+                        </svg> -->
+                        <img src="image/imd movie project.jpg" alt="" class="projectimg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Imd movie data analyst project using SQL</h3>
+                        <p class="text-gray-600 mb-4">Analyzed IMDb movie data using SQL to explore ratings, genres, revenue, and trends, generating insights through queries and aggregations.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">SQL</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">MySql Workbench</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Power Point</span>
+                            
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="https://1drv.ms/p/s!Ah0ZkQ6VlBBzhpxlrlLlxsPrrXPA-Q?e=8wN1Ig" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View Presentation</a>
+                            <a href="https://github.com/chetan38520/Imd-movie-data-analyst-project" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md stagger-item">
+                    <div class="h-48 bg-blue-500 flex items-center justify-center">
+                        <!-- <svg class="w-24 h-24 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 15c0-1.66 1.34-3 3-3h2c1.66 0 3 1.34 3 3v1H8v-1z"></path>
+                            <circle cx="12" cy="9" r="2"></circle>
+                        </svg> -->
+                        <img src="image/sales-analysis.jpeg" alt="" class="projectimg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-Commerce Data Analysis Project Using Python</h3>
+                        <p class="text-gray-600 mb-4">Analyzed e-commerce sales data using Python to uncover trends in customer behavior, top-selling products, revenue patterns, and regional performance.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Pandas</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">Matplotlib</span>
+                            
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-indigo-600 font-medium hover:text-indigo-800 transition">View Presentation</a>
+                            <a href="https://github.com/chetan38520/ecommerce-analysis" class="text-gray-600 hover:text-gray-800 transition"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="#" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition duration-300 animate__animated animate__pulse animate__infinite">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<!-- Resume & Certifications Section -->
+<section id="resume" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4 fade-in">Resume & Certifications</h2>
+        <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto fade-in">My professional journey and achievements.</p>
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Resume Download Card -->
+            <div class="lg:w-1/2 fade-in">
+                <div class="bg-white rounded-xl shadow-md p-8 h-full border border-gray-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-file-alt text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">My Resume</h3>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <p class="text-gray-700 mb-4">Download my complete resume to learn more about my professional experience and education.</p>
+                        <div class="flex items-center text-gray-600 mb-2">
+                            <i class="fas fa-file-pdf mr-2 text-red-500"></i>
+                            <span>Chetan_Resume.pdf</span>
+                            <span class="ml-auto">2.4 MB</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="resume/Chetan-resume.pdf" download="Chetan-resume.pdf" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition duration-300 flex items-center"><i class="fas fa-download mr-2"></i> Download Resume</a>
+                        <a href="#contact" class="border-2 border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-indigo-50 transition duration-300">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="lg:w-1/2 fade-in">
+                <div class="bg-white rounded-xl shadow-md p-8 h-full border border-gray-100">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-certificate text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Certifications</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Certification 1 -->
+                        <div class="certificate-item border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300 cursor-pointer" 
+                             data-certificate="google-data-analytics">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-indigo-50 rounded-lg flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fas fa-award text-indigo-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Scaler: Python and SQL for Data Science</h4>
+                                    <p class="text-gray-600 text-sm">Scaler | Issued 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Certification 2 -->
+                        <!-- <div class="certificate-item border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300 cursor-pointer"
+                             data-certificate="microsoft-data-analyst">
+                            <div class="flex items-start">
+                                <div class="w-16 h-16 bg-indigo-50 rounded-lg flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fas fa-award text-indigo-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Microsoft Certified: Data Analyst Associate</h4>
+                                    <p class="text-gray-600 text-sm">Microsoft | Issued 2022</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certificate Modal -->
+<div id="certificate-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto relative">
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 bg-white rounded-full p-2">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <div class="p-6 pt-12">
+            <h3 id="modal-title" class="text-2xl font-bold mb-4 text-center"></h3>
+            <div class="flex justify-center mb-4">
+                <img id="certificate-image" src="" alt="Certificate" class="max-w-full h-auto rounded-lg border border-gray-200" style="width: 70%; height: 70%;">
+            </div>
+            <div class="text-center mt-4">
+                <a id="verify-link" href="#" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                    <i class="fas fa-external-link-alt mr-2"></i>Verify this certificate
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 fade-in">My Skills</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto fade-in">Here are the technologies and tools I specialize in.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-brands fa-python fa-lg" style="color: #2b00ff;"></i>
+                    </div>
+                    <h3 class="font-semibold">Python</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+<rect width="16" height="9" x="28" y="15" fill="#21a366"></rect><path fill="#185c37" d="M44,24H12v16c0,1.105,0.895,2,2,2h28c1.105,0,2-0.895,2-2V24z"></path><rect width="16" height="9" x="28" y="24" fill="#107c42"></rect><rect width="16" height="9" x="12" y="15" fill="#3fa071"></rect><path fill="#33c481" d="M42,6H28v9h16V8C44,6.895,43.105,6,42,6z"></path><path fill="#21a366" d="M14,6h14v9H12V8C12,6.895,12.895,6,14,6z"></path><path d="M22.319,13H12v24h10.319C24.352,37,26,35.352,26,33.319V16.681C26,14.648,24.352,13,22.319,13z" opacity=".05"></path><path d="M22.213,36H12V13.333h10.213c1.724,0,3.121,1.397,3.121,3.121v16.425	C25.333,34.603,23.936,36,22.213,36z" opacity=".07"></path><path d="M22.106,35H12V13.667h10.106c1.414,0,2.56,1.146,2.56,2.56V32.44C24.667,33.854,23.52,35,22.106,35z" opacity=".09"></path><linearGradient id="flEJnwg7q~uKUdkX0KCyBa_UECmBSgBOvPT_gr1" x1="4.725" x2="23.055" y1="14.725" y2="33.055" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#18884f"></stop><stop offset="1" stop-color="#0b6731"></stop></linearGradient><path fill="url(#flEJnwg7q~uKUdkX0KCyBa_UECmBSgBOvPT_gr1)" d="M22,34H6c-1.105,0-2-0.895-2-2V16c0-1.105,0.895-2,2-2h16c1.105,0,2,0.895,2,2v16	C24,33.105,23.105,34,22,34z"></path><path fill="#fff" d="M9.807,19h2.386l1.936,3.754L16.175,19h2.229l-3.071,5l3.141,5h-2.351l-2.11-3.93L11.912,29H9.526	l3.193-5.018L9.807,19z"></path>
+</svg>
+
+                    </div>
+                    <h3 class="font-semibold">Excel</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="70%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+<linearGradient id="zlT103XX9RAwCGfF9JpW0a_3sGOUDo9nJ4k_gr1" x1="32" x2="32" y1="3.947" y2="44.751" gradientUnits="userSpaceOnUse"><stop offset=".006" stop-color="#ebb112"></stop><stop offset="1" stop-color="#bb5c17"></stop></linearGradient><path fill="url(#zlT103XX9RAwCGfF9JpW0a_3sGOUDo9nJ4k_gr1)" d="M27,44h10c1.105,0,2-0.895,2-2V6c0-1.105-0.895-2-2-2H27c-1.105,0-2,0.895-2,2v36	C25,43.105,25.895,44,27,44z"></path><linearGradient id="zlT103XX9RAwCGfF9JpW0b_3sGOUDo9nJ4k_gr2" x1="22.089" x2="26.009" y1="13.14" y2="45.672" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fed35d"></stop><stop offset=".281" stop-color="#f6c648"></stop><stop offset=".857" stop-color="#e3a513"></stop><stop offset=".989" stop-color="#de9d06"></stop></linearGradient><path fill="url(#zlT103XX9RAwCGfF9JpW0b_3sGOUDo9nJ4k_gr2)" d="M19,44h10c1.105,0,2-0.895,2-2V16c0-1.105-0.895-2-2-2H19c-1.105,0-2,0.895-2,2v26	C17,43.105,17.895,44,19,44z"></path><linearGradient id="zlT103XX9RAwCGfF9JpW0c_3sGOUDo9nJ4k_gr3" x1="9.803" x2="21.335" y1="22.781" y2="43.658" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd869"></stop><stop offset=".983" stop-color="#ffdf26"></stop></linearGradient><path fill="url(#zlT103XX9RAwCGfF9JpW0c_3sGOUDo9nJ4k_gr3)" d="M11,44h10c1.105,0,2-0.895,2-2V26c0-1.105-0.895-2-2-2H11c-1.105,0-2,0.895-2,2v16	C9,43.105,9.895,44,11,44z"></path>
+</svg>
+                    </div>
+                    <h3 class="font-semibold">PowerBi</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="65%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
+<g fill="#0012ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M45.403,25.562c-0.506,-1.89 -1.518,-3.553 -2.906,-4.862c1.134,-2.665 0.963,-5.724 -0.487,-8.237c-1.391,-2.408 -3.636,-4.131 -6.322,-4.851c-1.891,-0.506 -3.839,-0.462 -5.669,0.088c-1.743,-2.318 -4.457,-3.7 -7.372,-3.7c-4.906,0 -9.021,3.416 -10.116,7.991c-0.01,0.001 -0.019,-0.003 -0.029,-0.002c-2.902,0.36 -5.404,2.019 -6.865,4.549c-1.391,2.408 -1.76,5.214 -1.04,7.9c0.507,1.891 1.519,3.556 2.909,4.865c-1.134,2.666 -0.97,5.714 0.484,8.234c1.391,2.408 3.636,4.131 6.322,4.851c0.896,0.24 1.807,0.359 2.711,0.359c1.003,0 1.995,-0.161 2.957,-0.45c1.742,2.322 4.445,3.703 7.373,3.703c4.911,0 9.028,-3.422 10.12,-8.003c2.88,-0.35 5.431,-2.006 6.891,-4.535c1.39,-2.408 1.759,-5.214 1.039,-7.9zM35.17,9.543c2.171,0.581 3.984,1.974 5.107,3.919c1.049,1.817 1.243,4 0.569,5.967c-0.099,-0.062 -0.193,-0.131 -0.294,-0.19l-9.169,-5.294c-0.312,-0.179 -0.698,-0.177 -1.01,0.006l-10.198,6.041l-0.052,-4.607l8.663,-5.001c1.947,-1.124 4.214,-1.421 6.384,-0.841zM29.737,22.195l0.062,5.504l-4.736,2.805l-4.799,-2.699l-0.062,-5.504l4.736,-2.805zM14.235,14.412c0,-4.639 3.774,-8.412 8.412,-8.412c2.109,0 4.092,0.916 5.458,2.488c-0.105,0.056 -0.214,0.103 -0.318,0.163l-9.17,5.294c-0.312,0.181 -0.504,0.517 -0.5,0.877l0.133,11.851l-4.015,-2.258zM6.528,23.921c-0.581,-2.17 -0.282,-4.438 0.841,-6.383c1.06,-1.836 2.823,-3.074 4.884,-3.474c-0.004,0.116 -0.018,0.23 -0.018,0.348v10.588c0,0.361 0.195,0.694 0.51,0.872l10.329,5.81l-3.964,2.348l-8.662,-5.002c-1.946,-1.123 -3.338,-2.936 -3.92,-5.107zM14.83,40.457c-2.171,-0.581 -3.984,-1.974 -5.107,-3.919c-1.053,-1.824 -1.249,-4.001 -0.573,-5.97c0.101,0.063 0.196,0.133 0.299,0.193l9.169,5.294c0.154,0.089 0.327,0.134 0.5,0.134c0.177,0 0.353,-0.047 0.51,-0.14l10.198,-6.041l0.052,4.607l-8.663,5.001c-1.946,1.125 -4.214,1.424 -6.385,0.841zM35.765,35.588c0,4.639 -3.773,8.412 -8.412,8.412c-2.119,0 -4.094,-0.919 -5.459,-2.494c0.105,-0.056 0.216,-0.098 0.32,-0.158l9.17,-5.294c0.312,-0.181 0.504,-0.517 0.5,-0.877l-0.134,-11.85l4.015,2.258zM42.631,32.462c-1.056,1.83 -2.84,3.086 -4.884,3.483c0.004,-0.12 0.018,-0.237 0.018,-0.357v-10.588c0,-0.361 -0.195,-0.694 -0.51,-0.872l-10.329,-5.81l3.964,-2.348l8.662,5.002c1.946,1.123 3.338,2.937 3.92,5.107c0.581,2.17 0.282,4.438 -0.841,6.383z"></path></g></g>
+</svg>
+                    </div>
+                    <h3 class="font-semibold">Chatgpt</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="70%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chart-simple" style="color: #005eff;"></i>
+                    </div>
+                    <h3 class="font-semibold">Data visualizations</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="75%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 6 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fab fa-git-alt text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold">Git</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="85%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 7 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-database text-indigo-600 text-3xl"></i>
+                    </div>
+                    <h3 class="font-semibold">SQL</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="70%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 8 -->
+                <div class="skill-pill bg-indigo-50 rounded-xl p-6 flex flex-col items-center stagger-item">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                       <i class="fa-solid fa-broom" style="color: #005eff;"></i>
+                    </div>
+                    <h3 class="font-semibold">Data Cleaning</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-600 h-2 rounded-full progress-bar" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50 section-fade relative overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 opacity-30">
+        <div class="contact-particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="contact-particle" style="left: 80%; top: 30%; animation-delay: 2s;"></div>
+        <div class="contact-particle" style="left: 20%; top: 70%; animation-delay: 4s;"></div>
+        <div class="contact-particle" style="left: 90%; top: 80%; animation-delay: 1s;"></div>
+        <div class="contact-particle" style="left: 60%; top: 10%; animation-delay: 3s;"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 bounce-in">Get In Touch</h2>
+            <div class="w-24 h-1 bg-indigo-600 mx-auto mt-4 rounded-full animated-underline"></div>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto fade-in-up stagger-2">Have a project in mind or want to collaborate? Feel free to reach out!</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-lg contact-card-hover">
+                <div class="md:w-2/5 bg-gradient-to-br from-indigo-600 to-purple-700 text-white p-8 relative overflow-hidden">
+                    <!-- Animated background pattern -->
+                    <div class="absolute inset-0 opacity-20">
+                        <div class="contact-bg-pattern"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-semibold mb-6 slide-in-left">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="contact-info-item flex items-start slide-in-left stagger-1">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center mr-4 hover:bg-opacity-30 transition-all duration-300 hover:scale-110">
+                                    <i class="fas fa-map-marker-alt text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg">Location</h4>
+                                    <p class="text-indigo-200 hover:text-white transition-colors duration-300 cursor-pointer">Modinagar, UP, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info-item flex items-start slide-in-left stagger-2">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center mr-4 hover:bg-opacity-30 transition-all duration-300 hover:scale-110">
+                                    <i class="fas fa-envelope text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg">Email</h4>
+                                    <p class="text-indigo-200 hover:text-white transition-colors duration-300 cursor-pointer" onclick="copyToClipboard('hello@example.com')">chetankumarmodinagar423@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info-item flex items-start slide-in-left stagger-3">
+                                <div class="contact-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center mr-4 hover:bg-opacity-30 transition-all duration-300 hover:scale-110">
+                                    <i class="fas fa-phone text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg">Phone</h4>
+                                    <p class="text-indigo-200 hover:text-white transition-colors duration-300 cursor-pointer" onclick="copyToClipboard('+1 (555) 123-4567')">+91 7451949856</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12 slide-in-left stagger-4">
+                            <h4 class="font-medium mb-6 text-lg">Connect with me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/chetan-kumar-6165492b2/" class="social-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 hover:scale-110 hover:rotate-12">
+                                    <i class="fab fa-linkedin-in text-lg"></i>
+                                </a>
+                                <a href="https://github.com/chetan38520" class="social-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 hover:scale-110 hover:rotate-12">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
+                                <a href="https://x.com/ChetanK95559594" class="social-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 hover:scale-110 hover:rotate-12">
+                                    <i class="fab fa-twitter text-lg"></i>
+                                </a>
+                                <!-- <a href="#" class="social-icon w-12 h-12 rounded-full bg-white bg-opacity-20 backdrop-blur-sm flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 hover:scale-110 hover:rotate-12">
+                                    <i class="fab fa-instagram text-lg"></i>
+                                </a> -->
+                            </div>
+                        </div>
+                        
+                        <!-- Floating elements -->
+                        <div class="absolute top-4 right-4 w-8 h-8 bg-white bg-opacity-10 rounded-full float-animation"></div>
+                        <div class="absolute bottom-20 right-8 w-6 h-6 bg-white bg-opacity-15 rounded-full float-animation stagger-2"></div>
+                        <div class="absolute top-1/2 right-2 w-4 h-4 bg-white bg-opacity-20 rounded-full float-animation stagger-3"></div>
+                    </div>
+                </div>
+                
+                <div class="md:w-3/5 p-8 relative">
+                    <!-- Success message -->
+                    <div id="success-message" class="hidden mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg success-message">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Message sent successfully! (Demo)</span>
+                        </div>
+                    </div>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="form-group slide-in-right stagger-1">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Name *</label>
+                                <div class="relative">
+                                    <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Your name">
+                                    <div class="input-highlight"></div>
+                                </div>
+                            </div>
+                            <div class="form-group slide-in-right stagger-2">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Email *</label>
+                                <div class="relative">
+                                    <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Your email">
+                                    <div class="input-highlight"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group slide-in-right stagger-3">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Subject</label>
+                            <div class="relative">
+                                <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Subject">
+                                <div class="input-highlight"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group slide-in-right stagger-4">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Message *</label>
+                            <div class="relative">
+                                <textarea id="message" name="message" rows="4" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300 resize-none" placeholder="Your message"></textarea>
+                                <div class="input-highlight"></div>
+                                <div class="character-count text-sm text-gray-500 mt-1">0 characters</div>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-in-right stagger-5">
+                            <button type="submit" id="submit-btn" class="submit-button w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg relative overflow-hidden">
+                                <span class="button-text">Send Message</span>
+                                <span class="button-loading hidden">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                                    Sending...
+                                </span>
+                                <div class="button-ripple"></div>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Form progress indicator -->
+                    <div class="form-progress mt-4">
+                        <div class="flex justify-between text-sm text-gray-500 mb-2">
+                            <span>Form completion</span>
+                            <span id="progress-text">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="progress-bar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 animate__animated animate__fadeIn">
+                    <h2 class="text-2xl font-bold">Data Analysis</h2>
+                    <p class="text-gray-400 mt-2">Professional Title</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end animate__animated animate__fadeIn">
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.linkedin.com/in/chetan-kumar-6165492b2/" class="text-gray-400 hover:text-white transition transform hover:scale-125">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/chetan38520" class="text-gray-400 hover:text-white transition transform hover:scale-125">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com/ChetanK95559594" class="text-gray-400 hover:text-white transition transform hover:scale-125">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-125">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">&copy; 2023 Your Name. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+         // Typing effect
+        const typedTextElement = document.getElementById('typed-text');
+        const professions = ['Data Analyst', 'Creative Thinker'];
+        let professionIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+        
+        function typeText() {
+            const currentProfession = professions[professionIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentProfession.substring(0, charIndex - 1);
+                charIndex--;
+                typingDelay = 50;
+            } else {
+                typedTextElement.textContent = currentProfession.substring(0, charIndex + 1);
+                charIndex++;
+                typingDelay = 150;
+            }
+            
+            if (!isDeleting && charIndex === currentProfession.length) {
+                isDeleting = true;
+                typingDelay = 1500; // Pause at the end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                professionIndex = (professionIndex + 1) % professions.length;
+                typingDelay = 500; // Pause before typing next word
+            }
+            
+            setTimeout(typeText, typingDelay);
+        }
+        
+        // Start typing effect
+        setTimeout(typeText, 1000);
+        
+        // Animated Charts System
+        class AnimatedCharts {
+            constructor() {
+                this.time = 0;
+                this.lineData = [];
+                this.areaData = [];
+                this.scatterData = [];
+                this.bubbleData = [];
+                this.radarData = [];
+                this.networkNodes = [];
+                this.dataStreams = [];
+                this.barData = [65, 45, 80, 35, 70, 55];
+                this.pieData = [30, 25, 20, 15, 10];
+                this.donutData = [40, 30, 20, 10];
+                this.gaugeValue = 0;
+                
+                this.floatingPoints = [
+                    { element: document.getElementById('point1'), x: 0, y: 0, vx: 1, vy: 1 },
+                    { element: document.getElementById('point2'), x: 0, y: 0, vx: -1, vy: 1.5 },
+                    { element: document.getElementById('point3'), x: 0, y: 0, vx: 1.2, vy: -1 },
+                    { element: document.getElementById('point4'), x: 0, y: 0, vx: -1.5, vy: -1.2 },
+                    { element: document.getElementById('point5'), x: 0, y: 0, vx: 0.8, vy: 1.3 },
+                    { element: document.getElementById('point6'), x: 0, y: 0, vx: -1.1, vy: -0.9 }
+                ];
+                
+                this.init();
+                this.animate();
+            }
+            
+            init() {
+                // Initialize line chart data
+                for (let i = 0; i <= 15; i++) {
+                    this.lineData.push({
+                        x: i * 20,
+                        y1: 100 + Math.sin(i * 0.5) * 40,
+                        y2: 120 + Math.cos(i * 0.3) * 30
+                    });
+                }
+                
+                // Initialize area chart data
+                for (let i = 0; i <= 12; i++) {
+                    this.areaData.push({
+                        x: i * 25,
+                        y: 80 + Math.sin(i * 0.4) * 35
+                    });
+                }
+                
+                // Initialize scatter plot data
+                for (let i = 0; i < 20; i++) {
+                    this.scatterData.push({
+                        x: Math.random() * 200,
+                        y: Math.random() * 150,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5
+                    });
+                }
+                
+                // Initialize bubble chart data
+                for (let i = 0; i < 8; i++) {
+                    this.bubbleData.push({
+                        x: Math.random() * 180,
+                        y: Math.random() * 120,
+                        r: 10 + Math.random() * 20,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3
+                    });
+                }
+                
+                // Initialize radar chart data
+                const radarPoints = 6;
+                for (let i = 0; i < radarPoints; i++) {
+                    this.radarData.push({
+                        angle: (i / radarPoints) * 2 * Math.PI,
+                        value: 30 + Math.random() * 40
+                    });
+                }
+                
+                // Initialize network nodes
+                for (let i = 0; i < 12; i++) {
+                    this.networkNodes.push({
+                        x: 200 + Math.random() * 800,
+                        y: 200 + Math.random() * 400,
+                        r: 3 + Math.random() * 5,
+                        connections: []
+                    });
+                }
+                
+                // Create connections between nodes
+                this.networkNodes.forEach((node, index) => {
+                    const numConnections = Math.floor(Math.random() * 3) + 1;
+                    for (let i = 0; i < numConnections; i++) {
+                        const targetIndex = Math.floor(Math.random() * this.networkNodes.length);
+                        if (targetIndex !== index && !node.connections.includes(targetIndex)) {
+                            node.connections.push(targetIndex);
+                        }
+                    }
+                });
+                
+                // Initialize data streams
+                for (let i = 0; i < 3; i++) {
+                    this.dataStreams.push({
+                        particles: [],
+                        path: this.generateStreamPath(i)
+                    });
+                    
+                    // Add particles to each stream
+                    for (let j = 0; j < 15; j++) {
+                        this.dataStreams[i].particles.push({
+                            position: Math.random(),
+                            speed: 0.005 + Math.random() * 0.01,
+                            size: 1 + Math.random() * 2
+                        });
+                    }
+                }
+                
+                // Initialize floating points
+                this.floatingPoints.forEach(point => {
+                    point.x = Math.random() * 1200;
+                    point.y = Math.random() * 800;
+                });
+                
+                this.createBarChart();
+                this.createPieChart();
+                this.createDonutChart();
+                this.createScatterPlot();
+                this.createBubbleChart();
+                this.createRadarChart();
+                this.createGaugeChart();
+                this.createNetworkNodes();
+            }
+            
+            createBarChart() {
+                const barsContainer = document.getElementById('bars');
+                const barWidth = 30;
+                const barSpacing = 40;
+                
+                this.barData.forEach((value, index) => {
+                    const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    bar.setAttribute('x', index * barSpacing);
+                    bar.setAttribute('y', 150 - value);
+                    bar.setAttribute('width', barWidth);
+                    bar.setAttribute('height', 0);
+                    bar.setAttribute('fill', `rgba(255,255,255,${0.6 + index * 0.1})`);
+                    bar.setAttribute('rx', '2');
+                    bar.id = `bar-${index}`;
+                    barsContainer.appendChild(bar);
+                });
+            }
+            
+            createPieChart() {
+                const pieContainer = document.getElementById('pie-slices');
+                const radius = 60;
+                let currentAngle = 0;
+                const colors = [0.8, 0.7, 0.6, 0.5, 0.4];
+                
+                this.pieData.forEach((value, index) => {
+                    const angle = (value / 100) * 2 * Math.PI;
+                    const x1 = Math.cos(currentAngle) * radius;
+                    const y1 = Math.sin(currentAngle) * radius;
+                    const x2 = Math.cos(currentAngle + angle) * radius;
+                    const y2 = Math.sin(currentAngle + angle) * radius;
+                    
+                    const largeArcFlag = angle > Math.PI ? 1 : 0;
+                    
+                    const pathData = [
+                        `M 0 0`,
+                        `L ${x1} ${y1}`,
+                        `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                        'Z'
+                    ].join(' ');
+                    
+                    const slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    slice.setAttribute('d', pathData);
+                    slice.setAttribute('fill', `rgba(255,255,255,${colors[index]})`);
+                    slice.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+                    slice.setAttribute('stroke-width', '1');
+                    slice.id = `pie-slice-${index}`;
+                    pieContainer.appendChild(slice);
+                    
+                    currentAngle += angle;
+                });
+            }
+            
+            createDonutChart() {
+                const donutContainer = document.getElementById('donut-slices');
+                const outerRadius = 50;
+                const innerRadius = 25;
+                let currentAngle = 0;
+                const colors = [0.9, 0.7, 0.5, 0.3];
+                
+                this.donutData.forEach((value, index) => {
+                    const angle = (value / 100) * 2 * Math.PI;
+                    const x1 = Math.cos(currentAngle) * outerRadius;
+                    const y1 = Math.sin(currentAngle) * outerRadius;
+                    const x2 = Math.cos(currentAngle + angle) * outerRadius;
+                    const y2 = Math.sin(currentAngle + angle) * outerRadius;
+                    const x3 = Math.cos(currentAngle + angle) * innerRadius;
+                    const y3 = Math.sin(currentAngle + angle) * innerRadius;
+                    const x4 = Math.cos(currentAngle) * innerRadius;
+                    const y4 = Math.sin(currentAngle) * innerRadius;
+                    
+                    const largeArcFlag = angle > Math.PI ? 1 : 0;
+                    
+                    const pathData = [
+                        `M ${x1} ${y1}`,
+                        `A ${outerRadius} ${outerRadius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                        `L ${x3} ${y3}`,
+                        `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${x4} ${y4}`,
+                        'Z'
+                    ].join(' ');
+                    
+                    const slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    slice.setAttribute('d', pathData);
+                    slice.setAttribute('fill', `rgba(255,255,255,${colors[index]})`);
+                    slice.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+                    slice.setAttribute('stroke-width', '1');
+                    slice.id = `donut-slice-${index}`;
+                    donutContainer.appendChild(slice);
+                    
+                    currentAngle += angle;
+                });
+            }
+            
+            createScatterPlot() {
+                const scatterContainer = document.getElementById('scatter-points');
+                
+                this.scatterData.forEach((point, index) => {
+                    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    dot.setAttribute('cx', point.x);
+                    dot.setAttribute('cy', point.y);
+                    dot.setAttribute('r', 2);
+                    dot.setAttribute('fill', `rgba(255,255,255,${0.5 + Math.random() * 0.4})`);
+                    dot.id = `scatter-${index}`;
+                    scatterContainer.appendChild(dot);
+                });
+            }
+            
+            createBubbleChart() {
+                const bubbleContainer = document.getElementById('bubble-points');
+                
+                this.bubbleData.forEach((bubble, index) => {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', bubble.x);
+                    circle.setAttribute('cy', bubble.y);
+                    circle.setAttribute('r', bubble.r);
+                    circle.setAttribute('fill', 'url(#bubbleGradient)');
+                    circle.setAttribute('opacity', 0.6);
+                    circle.id = `bubble-${index}`;
+                    bubbleContainer.appendChild(circle);
+                });
+            }
+            
+            createRadarChart() {
+                const radarWeb = document.getElementById('radar-web');
+                const radius = 60;
+                const levels = 4;
+                
+                // Create web lines
+                for (let level = 1; level <= levels; level++) {
+                    const r = (radius / levels) * level;
+                    const points = [];
+                    
+                    this.radarData.forEach(point => {
+                        const x = Math.cos(point.angle - Math.PI / 2) * r;
+                        const y = Math.sin(point.angle - Math.PI / 2) * r;
+                        points.push(`${x},${y}`);
+                    });
+                    
+                    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+                    polygon.setAttribute('points', points.join(' '));
+                    polygon.setAttribute('fill', 'none');
+                    polygon.setAttribute('stroke', `rgba(255,255,255,${0.2 + level * 0.1})`);
+                    polygon.setAttribute('stroke-width', '1');
+                    radarWeb.appendChild(polygon);
+                }
+                
+                // Create axis lines
+                this.radarData.forEach(point => {
+                    const x = Math.cos(point.angle - Math.PI / 2) * radius;
+                    const y = Math.sin(point.angle - Math.PI / 2) * radius;
+                    
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', 0);
+                    line.setAttribute('y1', 0);
+                    line.setAttribute('x2', x);
+                    line.setAttribute('y2', y);
+                    line.setAttribute('stroke', 'rgba(255,255,255,0.3)');
+                    line.setAttribute('stroke-width', '1');
+                    radarWeb.appendChild(line);
+                });
+            }
+            
+            createGaugeChart() {
+                const gaugeRadius = 40;
+                const startAngle = -Math.PI;
+                const endAngle = 0;
+                
+                // Background arc
+                const gaugeBg = document.getElementById('gauge-bg');
+                const bgPath = this.createArcPath(0, 0, gaugeRadius, startAngle, endAngle);
+                gaugeBg.setAttribute('d', bgPath);
+            }
+            
+            createNetworkNodes() {
+                const nodesContainer = document.getElementById('nodes');
+                const connectionsContainer = document.getElementById('connections');
+                
+                // Create connections first (so they appear behind nodes)
+                this.networkNodes.forEach((node, index) => {
+                    node.connections.forEach(targetIndex => {
+                        const target = this.networkNodes[targetIndex];
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', node.x);
+                        line.setAttribute('y1', node.y);
+                        line.setAttribute('x2', target.x);
+                        line.setAttribute('y2', target.y);
+                        line.setAttribute('stroke', 'rgba(255,255,255,0.2)');
+                        line.setAttribute('stroke-width', '1');
+                        line.id = `connection-${index}-${targetIndex}`;
+                        connectionsContainer.appendChild(line);
+                    });
+                });
+                
+                // Create nodes
+                this.networkNodes.forEach((node, index) => {
+                    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    circle.setAttribute('cx', node.x);
+                    circle.setAttribute('cy', node.y);
+                    circle.setAttribute('r', node.r);
+                    circle.setAttribute('fill', 'rgba(255,255,255,0.8)');
+                    circle.id = `node-${index}`;
+                    nodesContainer.appendChild(circle);
+                });
+            }
+            
+            generateStreamPath(streamIndex) {
+                const paths = [
+                    // Stream 1: Curved path from top-left to bottom-right
+                    { start: { x: 50, y: 100 }, control1: { x: 300, y: 200 }, control2: { x: 600, y: 300 }, end: { x: 1000, y: 500 } },
+                    // Stream 2: Wave path across middle
+                    { start: { x: 100, y: 400 }, control1: { x: 400, y: 300 }, control2: { x: 700, y: 500 }, end: { x: 1100, y: 400 } },
+                    // Stream 3: Diagonal path from bottom-left to top-right
+                    { start: { x: 200, y: 600 }, control1: { x: 500, y: 400 }, control2: { x: 800, y: 200 }, end: { x: 1000, y: 100 } }
+                ];
+                
+                return paths[streamIndex];
+            }
+            
+            createArcPath(x, y, radius, startAngle, endAngle) {
+                const start = {
+                    x: x + radius * Math.cos(startAngle),
+                    y: y + radius * Math.sin(startAngle)
+                };
+                const end = {
+                    x: x + radius * Math.cos(endAngle),
+                    y: y + radius * Math.sin(endAngle)
+                };
+                
+                const largeArcFlag = endAngle - startAngle <= Math.PI ? "0" : "1";
+                
+                return [
+                    "M", start.x, start.y,
+                    "A", radius, radius, 0, largeArcFlag, 1, end.x, end.y
+                ].join(" ");
+            }
+            
+            animate() {
+                this.time += 0.02;
+                
+                // Animate line chart
+                const line1Points = [];
+                const line2Points = [];
+                const area1Points = [];
+                const dotsContainer = document.getElementById('line-dots');
+                dotsContainer.innerHTML = '';
+                
+                this.lineData.forEach((point, index) => {
+                    const animatedY1 = point.y1 + Math.sin(this.time + index * 0.3) * 20;
+                    const animatedY2 = point.y2 + Math.cos(this.time + index * 0.2) * 15;
+                    
+                    line1Points.push(`${point.x},${animatedY1}`);
+                    line2Points.push(`${point.x},${animatedY2}`);
+                    area1Points.push(`${point.x},${animatedY1}`);
+                    
+                    // Add animated dots
+                    if (index % 3 === 0) {
+                        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                        dot.setAttribute('cx', point.x);
+                        dot.setAttribute('cy', animatedY1);
+                        dot.setAttribute('r', 2 + Math.sin(this.time + index) * 0.5);
+                        dot.setAttribute('fill', 'rgba(255,255,255,0.9)');
+                        dotsContainer.appendChild(dot);
+                    }
+                });
+                
+                // Close area polygon
+                const lastPoint = this.lineData[this.lineData.length - 1];
+                const firstPoint = this.lineData[0];
+                area1Points.push(`${lastPoint.x},150`);
+                area1Points.push(`${firstPoint.x},150`);
+                
+                document.getElementById('line1').setAttribute('points', line1Points.join(' '));
+                document.getElementById('line2').setAttribute('points', line2Points.join(' '));
+                document.getElementById('area1').setAttribute('points', area1Points.join(' '));
+                
+                // Animate area chart
+                const areaPoints = [];
+                const areaLinePoints = [];
+                
+                this.areaData.forEach((point, index) => {
+                    const animatedY = point.y + Math.sin(this.time + index * 0.4) * 25;
+                    areaPoints.push(`${point.x},${animatedY}`);
+                    areaLinePoints.push(`${point.x},${animatedY}`);
+                });
+                
+                // Close area polygon
+                const lastAreaPoint = this.areaData[this.areaData.length - 1];
+                const firstAreaPoint = this.areaData[0];
+                areaPoints.push(`${lastAreaPoint.x},150`);
+                areaPoints.push(`${firstAreaPoint.x},150`);
+                
+                document.getElementById('area-fill').setAttribute('points', areaPoints.join(' '));
+                document.getElementById('area-line').setAttribute('points', areaLinePoints.join(' '));
+                
+                // Animate scatter plot
+                this.scatterData.forEach((point, index) => {
+                    point.x += point.vx;
+                    point.y += point.vy;
+                    
+                    // Bounce off boundaries
+                    if (point.x <= 0 || point.x >= 200) {
+                        point.vx *= -1;
+                        point.x = Math.max(0, Math.min(200, point.x));
+                    }
+                    if (point.y <= 0 || point.y >= 150) {
+                        point.vy *= -1;
+                        point.y = Math.max(0, Math.min(150, point.y));
+                    }
+                    
+                    const dot = document.getElementById(`scatter-${index}`);
+                    if (dot) {
+                        dot.setAttribute('cx', point.x);
+                        dot.setAttribute('cy', point.y);
+                        dot.setAttribute('r', 2 + Math.sin(this.time + index * 0.5) * 0.5);
+                    }
+                });
+                
+                // Animate bubble chart
+                this.bubbleData.forEach((bubble, index) => {
+                    bubble.x += bubble.vx;
+                    bubble.y += bubble.vy;
+                    
+                    // Bounce off boundaries
+                    if (bubble.x <= bubble.r || bubble.x >= 180 - bubble.r) {
+                        bubble.vx *= -1;
+                        bubble.x = Math.max(bubble.r, Math.min(180 - bubble.r, bubble.x));
+                    }
+                    if (bubble.y <= bubble.r || bubble.y >= 120 - bubble.r) {
+                        bubble.vy *= -1;
+                        bubble.y = Math.max(bubble.r, Math.min(120 - bubble.r, bubble.y));
+                    }
+                    
+                    const circle = document.getElementById(`bubble-${index}`);
+                    if (circle) {
+                        circle.setAttribute('cx', bubble.x);
+                        circle.setAttribute('cy', bubble.y);
+                        const animatedRadius = bubble.r + Math.sin(this.time + index * 0.7) * 3;
+                        circle.setAttribute('r', Math.max(5, animatedRadius));
+                    }
+                });
+                
+                // Animate radar chart
+                const radarPoints = [];
+                this.radarData.forEach((point, index) => {
+                    const animatedValue = point.value + Math.sin(this.time + index * 0.6) * 15;
+                    const x = Math.cos(point.angle - Math.PI / 2) * animatedValue;
+                    const y = Math.sin(point.angle - Math.PI / 2) * animatedValue;
+                    radarPoints.push(`${x},${y}`);
+                });
+                
+                document.getElementById('radar-data').setAttribute('points', radarPoints.join(' '));
+                
+                // Animate gauge chart
+                this.gaugeValue += 0.01;
+                const gaugeProgress = (Math.sin(this.gaugeValue) + 1) / 2; // 0 to 1
+                const gaugeAngle = -Math.PI + (gaugeProgress * Math.PI);
+                
+                const gaugeFill = document.getElementById('gauge-fill');
+                const fillPath = this.createArcPath(0, 0, 40, -Math.PI, gaugeAngle);
+                gaugeFill.setAttribute('d', fillPath);
+                
+                // Animate bar chart
+                this.barData.forEach((value, index) => {
+                    const bar = document.getElementById(`bar-${index}`);
+                    const animatedHeight = value + Math.sin(this.time + index * 0.5) * 10;
+                    bar.setAttribute('height', Math.max(0, animatedHeight));
+                    bar.setAttribute('y', 150 - Math.max(0, animatedHeight));
+                });
+                
+                // Animate pie chart rotation
+                const pieChart = document.getElementById('pie-chart');
+                pieChart.setAttribute('transform', `translate(200, 550) rotate(${this.time * 10})`);
+                
+                // Animate donut chart rotation (opposite direction)
+                const donutChart = document.getElementById('donut-chart');
+                donutChart.setAttribute('transform', `translate(900, 550) rotate(${-this.time * 15})`);
+                
+                // Animate network nodes
+                this.networkNodes.forEach((node, index) => {
+                    const nodeElement = document.getElementById(`node-${index}`);
+                    if (nodeElement) {
+                        const pulseSize = node.r + Math.sin(this.time + index * 0.8) * 1;
+                        nodeElement.setAttribute('r', pulseSize);
+                    }
+                    
+                    // Update connections
+                    node.connections.forEach(targetIndex => {
+                        const connection = document.getElementById(`connection-${index}-${targetIndex}`);
+                        if (connection) {
+                            const opacity = 0.2 + Math.sin(this.time + index + targetIndex) * 0.1;
+                            connection.setAttribute('stroke', `rgba(255,255,255,${Math.max(0.1, opacity)})`);
+                        }
+                    });
+                });
+                
+                // Animate data streams
+                this.dataStreams.forEach((stream, streamIndex) => {
+                    const streamContainer = document.getElementById(`stream${streamIndex + 1}`);
+                    streamContainer.innerHTML = '';
+                    
+                    stream.particles.forEach((particle, particleIndex) => {
+                        particle.position += particle.speed;
+                        if (particle.position > 1) particle.position = 0;
+                        
+                        // Calculate position along bezier curve
+                        const t = particle.position;
+                        const path = stream.path;
+                        
+                        const x = Math.pow(1-t, 3) * path.start.x + 
+                                 3 * Math.pow(1-t, 2) * t * path.control1.x + 
+                                 3 * (1-t) * Math.pow(t, 2) * path.control2.x + 
+                                 Math.pow(t, 3) * path.end.x;
+                        
+                        const y = Math.pow(1-t, 3) * path.start.y + 
+                                 3 * Math.pow(1-t, 2) * t * path.control1.y + 
+                                 3 * (1-t) * Math.pow(t, 2) * path.control2.y + 
+                                 Math.pow(t, 3) * path.end.y;
+                        
+                        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                        circle.setAttribute('cx', x);
+                        circle.setAttribute('cy', y);
+                        circle.setAttribute('r', particle.size);
+                        circle.setAttribute('fill', `rgba(255,255,255,${0.3 + particle.size * 0.2})`);
+                        streamContainer.appendChild(circle);
+                    });
+                });
+                
+                // Animate floating points
+                this.floatingPoints.forEach(point => {
+                    point.x += point.vx;
+                    point.y += point.vy;
+                    
+                    // Bounce off edges
+                    if (point.x <= 0 || point.x >= 1200) {
+                        point.vx *= -1;
+                        point.x = Math.max(0, Math.min(1200, point.x));
+                    }
+                    if (point.y <= 0 || point.y >= 800) {
+                        point.vy *= -1;
+                        point.y = Math.max(0, Math.min(800, point.y));
+                    }
+                    
+                    // Add randomness
+                    point.vx += (Math.random() - 0.5) * 0.05;
+                    point.vy += (Math.random() - 0.5) * 0.05;
+                    
+                    // Limit speed
+                    const maxSpeed = 1.5;
+                    point.vx = Math.max(-maxSpeed, Math.min(maxSpeed, point.vx));
+                    point.vy = Math.max(-maxSpeed, Math.min(maxSpeed, point.vy));
+                    
+                    // Update position
+                    point.element.setAttribute('cx', point.x);
+                    point.element.setAttribute('cy', point.y);
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize animated charts
+        const charts = new AnimatedCharts();
+        
+        // Scroll reveal animation
+        const sections = document.querySelectorAll('.section-fade');
+        
+        function checkSections() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Check sections on load
+        window.addEventListener('load', checkSections);
+        
+        // Check sections on scroll
+        window.addEventListener('scroll', checkSections);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Contact Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                formMessage.textContent = 'Please fill in all fields.';
+                formMessage.classList.remove('hidden', 'text-green-600');
+                formMessage.classList.add('text-red-600');
+                return;
+            }
+            
+            // Demo form submission (in a real application, you would send this to a server)
+            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+            formMessage.classList.remove('hidden', 'text-red-600');
+            formMessage.classList.add('text-green-600', 'animate__animated', 'animate__fadeIn');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+        
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const staggerItems = document.querySelectorAll('.stagger-item');
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        // Intersection Observer for fade-in elements
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+        
+        // Intersection Observer for stagger items
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add staggered animation with delay
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        staggerItems.forEach(item => {
+            staggerObserver.observe(item);
+        });
+        
+        // Intersection Observer for progress bars
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width;
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        progressBars.forEach(bar => {
+            progressObserver.observe(bar);
+        });
+        
+        // Animate typing text on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any additional initialization here
+        });
+
+
+
+ // Certificate Modal Functionality
+const certificateModal = document.getElementById('certificate-modal');
+const closeModal = document.getElementById('close-modal');
+const certificateImage = document.getElementById('certificate-image');
+const modalTitle = document.getElementById('modal-title');
+const verifyLink = document.getElementById('verify-link');
+
+// Certificate data - replace with your actual data
+const certificates = {
+    'google-data-analytics': {
+        image: 'image/python-sql-for-dataScience.png',
+        title: 'Scaler: Python and SQL for Data Science',
+        verifyUrl: 'https://www.scaler.com/topics/certificates/'
+    },
+    'microsoft-data-analyst': {
+        image: 'images/microsoft-certificate.jpg',
+        title: 'Scaler: Python and SQL for Data Science',
+        verifyUrl: '#'
+    }
+};
+
+// Open modal when clicking on certificates
+document.querySelectorAll('.certificate-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const certId = item.getAttribute('data-certificate');
+        const certData = certificates[certId];
+        
+        certificateImage.src = certData.image;
+        modalTitle.textContent = certData.title;
+        verifyLink.href = certData.verifyUrl;
+        
+        certificateModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Close modal
+closeModal.addEventListener('click', () => {
+    certificateModal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+});
+
+// Close when clicking outside modal
+certificateModal.addEventListener('click', (e) => {
+    if (e.target === certificateModal) {
+        certificateModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !certificateModal.classList.contains('hidden')) {
+        certificateModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+
+const btn = document.querySelector('#projects a.inline-block');
+  const projects = Array.from(document.querySelectorAll('#projects .project-card'));
+
+  // Function to get number of projects to show based on screen width
+  function getVisibleCount() {
+    const width = window.innerWidth;
+    if (width >= 1024) return 3;  // Laptop and up (lg breakpoint)
+    else if (width >= 640) return 2;  // Tablet (md breakpoint)
+    else return 1;  // Mobile (sm breakpoint)
+  }
+
+  // Show/hide projects based on visible count
+  function updateVisibleProjects(showAll = false) {
+    const visibleCount = getVisibleCount();
+
+    if (showAll) {
+      projects.forEach(p => p.style.display = 'block');
+      btn.textContent = 'Show Less';
+    } else {
+      projects.forEach((p, i) => {
+        p.style.display = i < visibleCount ? 'block' : 'none';
+      });
+      btn.textContent = 'View All Projects';
+    }
+  }
+
+  // Initialize on page load and on resize
+  window.addEventListener('load', () => updateVisibleProjects(false));
+  window.addEventListener('resize', () => updateVisibleProjects(false));
+        
+
+  // Button toggle event
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (btn.textContent === 'View All Projects') {
+      updateVisibleProjects(true);
+    } else {
+      updateVisibleProjects(false);
+      document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
+      
+    }
+  });
+
+        window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('scroll-progress').style.width = `${scrollPercent}%`;
+  });
+        
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
