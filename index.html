@@ -423,142 +423,155 @@
 }
 
 .form-group {
-    position: relative;
-}
-
-.form-input {
-    position: relative;
-    outline: none;
-    z-index: 1;
-}
-/* Autofill background color override karne ke liye */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  box-shadow: 0 0 0px 1000px #fff inset !important;
-  -webkit-text-fill-color: #000 !important;
-}
-
-
-
-input::-webkit-autofill {
-  box-shadow: 0 0 0px 1000px white inset !important; /* autofill background remove */
-  -webkit-text-fill-color: black !important;
-}
-
-.form-input:focus + .input-highlight {
-    opacity: 1;
-    transform: scaleX(1);
-}
-
-.input-highlight {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #4F46E5, #7C3AED);
-    opacity: 0;
-    transform: scaleX(0);
-    transition: all 0.3s ease;
-    border-radius: 1px;
-}
-
-.form-input:focus {
-    border-color: #4F46E5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-}
-
-.form-input:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.submit-button {
-    position: relative;
-    overflow: hidden;
-}
-
-.submit-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255,255,255,0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.6s ease;
-}
-
-.submit-button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.button-ripple {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255,255,255,0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.6s ease;
-}
-
-.submit-button:active .button-ripple {
-    width: 200px;
-    height: 200px;
-    transition: all 0.2s ease;
-}
-
-.success-message {
-    animation: successSlide 0.5s ease-out;
-}
-
-@keyframes successSlide {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.form-progress {
-    opacity: 0;
-    animation: fadeInUp 0.5s ease-out 0.3s both;
-}
-
-.character-count {
-    transition: color 0.3s ease;
-}
-
-.character-count.warning {
-    color: #F59E0B;
-}
-
-.character-count.error {
-    color: #EF4444;
-}
-
-/* Fade in up animation (needed for form-progress) */
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+            position: relative;
+        }
+        
+        .form-input {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-input:focus + .input-highlight {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+        
+        .input-highlight {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4F46E5, #7C3AED);
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+        
+        .form-input:focus {
+            border-color: #4F46E5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .form-input:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .submit-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+        
+        .submit-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .button-ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+        
+        .submit-button:active .button-ripple {
+            width: 200px;
+            height: 200px;
+            transition: all 0.2s ease;
+        }
+        
+        .success-message {
+            animation: successSlide 0.5s ease-out;
+        }
+        
+        @keyframes successSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-progress {
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out 0.3s both;
+        }
+        
+        .character-count {
+            transition: color 0.3s ease;
+        }
+        
+        .character-count.warning {
+            color: #F59E0B;
+        }
+        
+        .character-count.error {
+            color: #EF4444;
+        }
+        
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            border: 5px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .tooltip:hover::after,
+        .tooltip:hover::before {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
         /* Certificate Styles */
 .certificate-item {
     transition: all 0.3s ease;
@@ -1372,52 +1385,52 @@ nav{
                         </div>
                     </div>
                     
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="form-group slide-in-right stagger-1">
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Name *</label>
+                   <form id="contact-form" action="/send" method="POST" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="form-group slide-in-right stagger-1">
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Name *</label>
+                                    <div class="relative">
+                                        <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Your name">
+                                        <div class="input-highlight"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group slide-in-right stagger-2">
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Email *</label>
+                                    <div class="relative">
+                                        <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Your email">
+                                        <div class="input-highlight"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group slide-in-right stagger-3">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Subject</label>
                                 <div class="relative">
-                                    <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Your name">
+                                    <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Subject">
                                     <div class="input-highlight"></div>
                                 </div>
                             </div>
-                            <div class="form-group slide-in-right stagger-2">
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Email *</label>
+                            
+                            <div class="form-group slide-in-right stagger-4">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Message *</label>
                                 <div class="relative">
-                                    <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Your email">
+                                    <textarea id="message" name="message" rows="4" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300 resize-none" placeholder="Your message"></textarea>
                                     <div class="input-highlight"></div>
+                                    <div class="character-count text-sm text-gray-500 mt-1">0 characters</div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="form-group slide-in-right stagger-3">
-                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Subject</label>
-                            <div class="relative">
-                                <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300" placeholder="Subject">
-                                <div class="input-highlight"></div>
+                            
+                            <div class="slide-in-right stagger-5">
+                                <button type="submit" id="submit-btn" class="submit-button w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg relative overflow-hidden">
+                                    <span class="button-text">Send Message</span>
+                                    <span class="button-loading hidden">
+                                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                                        Sending...
+                                    </span>
+                                    <div class="button-ripple"></div>
+                                </button>
                             </div>
-                        </div>
-                        
-                        <div class="form-group slide-in-right stagger-4">
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2 transition-colors duration-300">Message *</label>
-                            <div class="relative">
-                                <textarea id="message" name="message" rows="4" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 hover:border-indigo-300 resize-none" placeholder="Your message"></textarea>
-                                <div class="input-highlight"></div>
-                                <div class="character-count text-sm text-gray-500 mt-1">0 characters</div>
-                            </div>
-                        </div>
-                        
-                        <div class="slide-in-right stagger-5">
-                            <button type="submit" id="submit-btn" class="submit-button w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg relative overflow-hidden">
-                                <span class="button-text">Send Message</span>
-                                <span class="button-loading hidden">
-                                    <i class="fas fa-spinner fa-spin mr-2"></i>
-                                    Sending...
-                                </span>
-                                <div class="button-ripple"></div>
-                            </button>
-                        </div>
-                    </form>
+                        </form>
                     
                     <!-- Form progress indicator -->
                     <div class="form-progress mt-4">
@@ -2163,213 +2176,325 @@ nav{
                 }
             });
         });
-        // Contact Form Handling
+       // Enhanced Contact Form Functionality
         const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const buttonText = submitBtn.querySelector('.button-text');
+        const buttonLoading = submitBtn.querySelector('.button-loading');
+        const successMessage = document.getElementById('success-message');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const characterCount = document.querySelector('.character-count');
+        const messageTextarea = document.getElementById('message');
         
-        contactForm.addEventListener('submit', function(e) {
+        // Copy to clipboard functionality
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showTooltip(event.target, 'Copied!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showTooltip(event.target, 'Copied!');
+            });
+        }
+        
+        // Show tooltip
+        function showTooltip(element, message) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'absolute bg-gray-800 text-white px-2 py-1 rounded text-xs -top-8 left-1/2 transform -translate-x-1/2 z-50';
+            tooltip.textContent = message;
+            element.style.position = 'relative';
+            element.appendChild(tooltip);
+            
+            setTimeout(() => {
+                if (tooltip.parentNode) {
+                    tooltip.parentNode.removeChild(tooltip);
+                }
+            }, 2000);
+        }
+        
+        // Form progress tracking
+        function updateFormProgress() {
+            const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
+            let filledInputs = 0;
+            
+            formInputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    filledInputs++;
+                }
+            });
+            
+            const progress = (filledInputs / formInputs.length) * 100;
+            progressBar.style.width = progress + '%';
+            progressText.textContent = Math.round(progress) + '%';
+            
+            // Add completion animation
+            if (progress === 100) {
+                progressBar.style.background = 'linear-gradient(90deg, #10B981, #059669)';
+                progressText.style.color = '#10B981';
+            } else {
+                progressBar.style.background = 'linear-gradient(90deg, #4F46E5, #7C3AED)';
+                progressText.style.color = '#6B7280';
+            }
+        }
+        
+        // Character count for message
+        function updateCharacterCount() {
+            const count = messageTextarea.value.length;
+            const maxLength = 500;
+            characterCount.textContent = `${count} characters`;
+            
+            if (count > maxLength * 0.8) {
+                characterCount.className = 'character-count text-sm warning';
+            } else if (count > maxLength) {
+                characterCount.className = 'character-count text-sm error';
+            } else {
+                characterCount.className = 'character-count text-sm text-gray-500';
+            }
+        }
+        
+        // Real-time validation
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldGroup = field.closest('.form-group');
+            const label = fieldGroup.querySelector('label');
+            
+            // Remove existing validation classes
+            field.classList.remove('border-red-500', 'border-green-500');
+            label.classList.remove('text-red-500', 'text-green-500');
+            
+            if (field.hasAttribute('required') && value === '') {
+                field.classList.add('border-red-500');
+                label.classList.add('text-red-500');
+                return false;
+            } else if (field.type === 'email' && value !== '') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    field.classList.add('border-red-500');
+                    label.classList.add('text-red-500');
+                    return false;
+                } else {
+                    field.classList.add('border-green-500');
+                    label.classList.add('text-green-500');
+                    return true;
+                }
+            } else if (value !== '') {
+                field.classList.add('border-green-500');
+                label.classList.add('text-green-500');
+                return true;
+            }
+            
+            return true;
+        }
+        
+        // Add event listeners to form inputs
+        const formInputs = contactForm.querySelectorAll('input, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                updateFormProgress();
+                validateField(input);
+                if (input === messageTextarea) {
+                    updateCharacterCount();
+                }
+            });
+            
+            input.addEventListener('blur', () => {
+                validateField(input);
+            });
+            
+            // Add focus animations
+            input.addEventListener('focus', () => {
+                input.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Enhanced form submission
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            // Validate all fields
+            let isValid = true;
+            formInputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
             
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                formMessage.textContent = 'Please fill in all fields.';
-                formMessage.classList.remove('hidden', 'text-green-600');
-                formMessage.classList.add('text-red-600');
+            if (!isValid) {
+                // Shake animation for invalid form
+                contactForm.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    contactForm.style.animation = '';
+                }, 500);
                 return;
             }
             
-            // Demo form submission (in a real application, you would send this to a server)
-            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            formMessage.classList.remove('hidden', 'text-red-600');
-            formMessage.classList.add('text-green-600', 'animate__animated', 'animate__fadeIn');
+            // Show loading state
+            submitBtn.disabled = true;
+            buttonText.classList.add('hidden');
+            buttonLoading.classList.remove('hidden');
+            submitBtn.style.transform = 'scale(0.98)';
             
-            // Reset form
-            contactForm.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
-        });
-        
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const staggerItems = document.querySelectorAll('.stagger-item');
-        const progressBars = document.querySelectorAll('.progress-bar');
-        
-        // Intersection Observer for fade-in elements
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('appear');
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        fadeElements.forEach(element => {
-            fadeObserver.observe(element);
-        });
-        
-        // Intersection Observer for stagger items
-        const staggerObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Add staggered animation with delay
+            try {
+                // Create FormData object
+                const formData = new FormData(contactForm);
+                
+                // Send form data to Flask backend
+                const response = await fetch('/send', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.text();
+                
+                if (result.includes('✅')) {
+                    // Show success state
+                    buttonLoading.classList.add('hidden');
+                    buttonText.textContent = 'Message Sent!';
+                    buttonText.classList.remove('hidden');
+                    submitBtn.style.background = 'linear-gradient(90deg, #10B981, #059669)';
+                    submitBtn.style.transform = 'scale(1)';
+                    
+                    // Show success message
+                    const successMsg = document.getElementById('success-message');
+                    successMsg.querySelector('span').textContent = 'Message sent successfully!';
+                    successMsg.classList.remove('hidden');
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Reset form after delay
                     setTimeout(() => {
-                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    staggerObserver.unobserve(entry.target);
+                        contactForm.reset();
+                        updateFormProgress();
+                        updateCharacterCount();
+                        
+                        // Reset button
+                        submitBtn.disabled = false;
+                        buttonText.textContent = 'Send Message';
+                        submitBtn.style.background = '';
+                        
+                        // Hide success message
+                        successMsg.classList.add('hidden');
+                        
+                        // Reset field validation styles
+                        formInputs.forEach(input => {
+                            input.classList.remove('border-red-500', 'border-green-500');
+                            const label = input.closest('.form-group').querySelector('label');
+                            label.classList.remove('text-red-500', 'text-green-500');
+                        });
+                    }, 3000);
+                } else {
+                    throw new Error(result);
                 }
-            });
-        }, { threshold: 0.1 });
-        
-        staggerItems.forEach(item => {
-            staggerObserver.observe(item);
+            } catch (error) {
+                // Show error state
+                buttonLoading.classList.add('hidden');
+                buttonText.textContent = 'Error - Try Again';
+                buttonText.classList.remove('hidden');
+                submitBtn.style.background = 'linear-gradient(90deg, #EF4444, #DC2626)';
+                submitBtn.style.transform = 'scale(1)';
+                
+                // Show error message
+                const successMsg = document.getElementById('success-message');
+                successMsg.className = 'mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg success-message';
+                successMsg.querySelector('i').className = 'fas fa-exclamation-circle mr-2';
+                successMsg.querySelector('span').textContent = 'Failed to send message. Please try again.';
+                successMsg.classList.remove('hidden');
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    buttonText.textContent = 'Send Message';
+                    submitBtn.style.background = '';
+                    successMsg.classList.add('hidden');
+                    successMsg.className = 'hidden mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg success-message';
+                    successMsg.querySelector('i').className = 'fas fa-check-circle mr-2';
+                }, 3000);
+            }
         });
         
-        // Intersection Observer for progress bars
-        const progressObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const width = entry.target.getAttribute('data-width');
-                    entry.target.style.width = width;
-                    progressObserver.unobserve(entry.target);
+        // Add shake animation for invalid form
+        const shakeKeyframes = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = shakeKeyframes;
+        document.head.appendChild(styleSheet);
+        
+        // Initialize character count
+        updateCharacterCount();
+        
+        // Add hover effects to contact info items
+        const contactInfoItems = document.querySelectorAll('.contact-info-item');
+        contactInfoItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const icon = item.querySelector('.contact-icon');
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const icon = item.querySelector('.contact-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+        
+        // Add ripple effect to social icons
+        const socialIcons = document.querySelectorAll('.social-icon');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = '50%';
+                ripple.style.top = '50%';
+                ripple.style.width = '20px';
+                ripple.style.height = '20px';
+                ripple.style.marginLeft = '-10px';
+                ripple.style.marginTop = '-10px';
+                
+                icon.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Add ripple animation
+        const rippleKeyframes = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
                 }
-            });
-        }, { threshold: 0.1 });
+            }
+        `;
         
-        progressBars.forEach(bar => {
-            progressObserver.observe(bar);
-        });
-        
-        // Animate typing text on load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add any additional initialization here
-        });
-
-
-
- // Certificate Modal Functionality
-const certificateModal = document.getElementById('certificate-modal');
-const closeModal = document.getElementById('close-modal');
-const certificateImage = document.getElementById('certificate-image');
-const modalTitle = document.getElementById('modal-title');
-const verifyLink = document.getElementById('verify-link');
-
-// Certificate data - replace with your actual data
-const certificates = {
-    'google-data-analytics': {
-        image: 'image/python-sql-for-dataScience.png',
-        title: 'Scaler: Python and SQL for Data Science',
-        verifyUrl: 'https://www.scaler.com/topics/certificates/'
-    },
-    'microsoft-data-analyst': {
-        image: 'images/microsoft-certificate.jpg',
-        title: 'Scaler: Python and SQL for Data Science',
-        verifyUrl: '#'
-    }
-};
-
-// Open modal when clicking on certificates
-document.querySelectorAll('.certificate-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const certId = item.getAttribute('data-certificate');
-        const certData = certificates[certId];
-        
-        certificateImage.src = certData.image;
-        modalTitle.textContent = certData.title;
-        verifyLink.href = certData.verifyUrl;
-        
-        certificateModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    });
-});
-
-// Close modal
-closeModal.addEventListener('click', () => {
-    certificateModal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-});
-
-// Close when clicking outside modal
-certificateModal.addEventListener('click', (e) => {
-    if (e.target === certificateModal) {
-        certificateModal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// Close with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !certificateModal.classList.contains('hidden')) {
-        certificateModal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-
-const btn = document.querySelector('#projects a.inline-block');
-  const projects = Array.from(document.querySelectorAll('#projects .project-card'));
-
-  // Function to get number of projects to show based on screen width
-  function getVisibleCount() {
-    const width = window.innerWidth;
-    if (width >= 1024) return 3;  // Laptop and up (lg breakpoint)
-    else if (width >= 640) return 2;  // Tablet (md breakpoint)
-    else return 1;  // Mobile (sm breakpoint)
-  }
-
-  // Show/hide projects based on visible count
-  function updateVisibleProjects(showAll = false) {
-    const visibleCount = getVisibleCount();
-
-    if (showAll) {
-      projects.forEach(p => p.style.display = 'block');
-      btn.textContent = 'Show Less';
-    } else {
-      projects.forEach((p, i) => {
-        p.style.display = i < visibleCount ? 'block' : 'none';
-      });
-      btn.textContent = 'View All Projects';
-    }
-  }
-
-  // Initialize on page load and on resize
-  window.addEventListener('load', () => updateVisibleProjects(false));
-  window.addEventListener('resize', () => updateVisibleProjects(false));
-        
-
-  // Button toggle event
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (btn.textContent === 'View All Projects') {
-      updateVisibleProjects(true);
-    } else {
-      updateVisibleProjects(false);
-      document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
-      
-    }
-  });
-
-        window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    document.getElementById('scroll-progress').style.width = `${scrollPercent}%`;
-  });
-        
+        const rippleStyleSheet = document.createElement('style');
+        rippleStyleSheet.textContent = rippleKeyframes;
+        document.head.appendChild(rippleStyleSheet);
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
