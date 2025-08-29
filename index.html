@@ -1551,25 +1551,22 @@ nav{
 
 
 
-      // Debug code to check if social media links are being clicked
-document.querySelectorAll('.social-icon').forEach(link => {
-    link.addEventListener('click', function(e) {
-        console.log('Social link clicked:', this.href);
-        // Allow the link to work normally
-    });
+     // Remove any existing click event listeners first (clean slate)
+const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
+navLinks.forEach(link => {
+    // Clone the node to remove all event listeners
+    const newLink = link.cloneNode(true);
+    link.parentNode.replaceChild(newLink, link);
 });
 
-// Smooth Scrolling for Navigation Links Only
+// Now add new event listeners only for internal navigation
 document.querySelectorAll('nav a, #mobile-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         
-        console.log('Link clicked:', href);
-        
         // Only process internal page links
         if (href && href.startsWith('#') && href !== '#') {
             e.preventDefault();
-            console.log('Preventing default for internal link');
             
             // Close mobile menu if open
             if (!mobileMenu.classList.contains('hidden')) {
@@ -1584,9 +1581,16 @@ document.querySelectorAll('nav a, #mobile-menu a').forEach(anchor => {
                     behavior: 'smooth'
                 });
             }
-        } else {
-            console.log('Allowing external link to proceed normally');
         }
+        // External links will proceed normally (no preventDefault())
+    });
+});
+
+// Ensure social media links work by not interfering with them
+document.querySelectorAll('.social-icon').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // Let these links work normally - don't interfere
+        console.log('Navigating to:', this.href);
     });
 });
          // Typing effect
@@ -2767,6 +2771,7 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
