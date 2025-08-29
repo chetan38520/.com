@@ -1551,20 +1551,19 @@ nav{
 
 
 
-     // Remove any existing click event listeners first (clean slate)
-const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
-navLinks.forEach(link => {
-    // Clone the node to remove all event listeners
-    const newLink = link.cloneNode(true);
-    link.parentNode.replaceChild(newLink, link);
+   // First, remove all click event listeners from navigation elements
+const cleanElements = document.querySelectorAll('nav a, #mobile-menu a, .social-icon');
+cleanElements.forEach(element => {
+    const newElement = element.cloneNode(true);
+    element.parentNode.replaceChild(newElement, element);
 });
 
-// Now add new event listeners only for internal navigation
+// Now set up smooth scrolling only for internal navigation links
 document.querySelectorAll('nav a, #mobile-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         
-        // Only process internal page links
+        // Only handle internal page anchors
         if (href && href.startsWith('#') && href !== '#') {
             e.preventDefault();
             
@@ -1582,15 +1581,15 @@ document.querySelectorAll('nav a, #mobile-menu a').forEach(anchor => {
                 });
             }
         }
-        // External links will proceed normally (no preventDefault())
+        // All other links (including social media) will work normally
     });
 });
 
-// Ensure social media links work by not interfering with them
+// Make absolutely sure social media links work
 document.querySelectorAll('.social-icon').forEach(link => {
     link.addEventListener('click', function(e) {
-        // Let these links work normally - don't interfere
-        console.log('Navigating to:', this.href);
+        // Don't prevent default - let the browser handle the navigation
+        console.log('Social media link clicked:', this.href);
     });
 });
          // Typing effect
@@ -2771,6 +2770,7 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
