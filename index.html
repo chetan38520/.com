@@ -1551,14 +1551,25 @@ nav{
 
 
 
-       // Smooth Scrolling for Anchor Links
-document.querySelectorAll('a').forEach(anchor => {
+      // Debug code to check if social media links are being clicked
+document.querySelectorAll('.social-icon').forEach(link => {
+    link.addEventListener('click', function(e) {
+        console.log('Social link clicked:', this.href);
+        // Allow the link to work normally
+    });
+});
+
+// Smooth Scrolling for Navigation Links Only
+document.querySelectorAll('nav a, #mobile-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         
-        // Check if this is an internal page anchor link
+        console.log('Link clicked:', href);
+        
+        // Only process internal page links
         if (href && href.startsWith('#') && href !== '#') {
             e.preventDefault();
+            console.log('Preventing default for internal link');
             
             // Close mobile menu if open
             if (!mobileMenu.classList.contains('hidden')) {
@@ -1573,8 +1584,9 @@ document.querySelectorAll('a').forEach(anchor => {
                     behavior: 'smooth'
                 });
             }
+        } else {
+            console.log('Allowing external link to proceed normally');
         }
-        // All other links (including social media) will work normally
     });
 });
          // Typing effect
@@ -2755,6 +2767,7 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
