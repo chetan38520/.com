@@ -2210,6 +2210,30 @@ nav{
         //         }
         //     });
         // });
+
+      // Smooth Scrolling for Anchor Links - Only for internal page anchors
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close mobile menu if open
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+        
         // Contact Form Handling
          const contactForm = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
@@ -2698,6 +2722,7 @@ const btn = document.querySelector('#projects a.inline-block');
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'943c7d639046a84e',t:'MTc0NzkxODc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
